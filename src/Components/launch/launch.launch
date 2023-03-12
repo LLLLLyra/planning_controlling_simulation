@@ -1,0 +1,10 @@
+<launch>
+    <arg name="file" default="0"/>
+    <arg name="enable_parking" default="0"/>
+    <arg name="enable_lattice" default="0"/>
+    <param name="file_name" value="path_$(arg file)" type="string"/>
+    <param name="parking" value="$(arg enable_parking)" type="bool"/>
+    <param name="lattice" value="$(arg enable_lattice)" type="bool"/>
+    <!-- Start controller -->
+    <node pkg="simulation" type="simulation_main_node"  name="simulation_main_node" output="screen"/>
+</launch>

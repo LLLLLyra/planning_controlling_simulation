@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package controller;
+
+import "pid_conf.proto";
+
+message SimplePIDLatLonControllerConf {
+    optional double look_ahead_distance = 1 [default = 1.0]; // Look ahead distance
+    optional double d = 2 [default = 0.1]; // distance close to a target point
+    optional PidConf station_pid_conf = 3;
+    optional PidConf yaw_pid_conf = 4;
+    optional double dt = 5 [default = 0.01];
+    optional double speed_controller_input_limit = 6;
+    optional double cutoff_freq = 7;
+    optional double mean_filter_window_size = 8;
+}

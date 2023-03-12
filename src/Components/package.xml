@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>simulation</name>
+  <version>1.0.0</version>
+  <description>The simulation package</description>
+  <maintainer email="xxx@123.com">xxx</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <build_depend>message_generation</build_depend>
+
+  <export>
+
+  </export>
+</package>

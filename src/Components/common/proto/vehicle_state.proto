@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package vehicle_state;
+
+import "chassis.proto";
+import "localization.proto";
+
+message VehicleState {
+  optional double x = 1 [default = 0.0];
+  optional double y = 2 [default = 0.0];
+  optional double z = 3 [default = 0.0];
+  optional double timestamp = 4 [default = 0.0];
+  optional double roll = 5 [default = 0.0];
+  optional double pitch = 6 [default = 0.0];
+  optional double yaw = 7 [default = 0.0];
+  optional double heading = 8 [default = 0.0];
+  optional double kappa = 9 [default = 0.0];
+  optional double linear_velocity = 10 [default = 0.0];
+  optional double angular_velocity = 11 [default = 0.0];
+  optional double linear_acceleration = 12 [default = 0.0];
+  optional double dt = 13 [default = 0.5];
+  optional canbus.Chassis.GearPosition gear = 14;
+  optional canbus.Chassis.DrivingMode driving_mode = 15;
+  optional controller.Pose pose = 16;
+  optional double steering_percentage = 17;
+}

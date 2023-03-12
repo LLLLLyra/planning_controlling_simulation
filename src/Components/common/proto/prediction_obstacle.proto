@@ -1,0 +1,89 @@
+syntax = "proto2";
+
+package prediction;
+
+import "pnc_point.proto";
+import "perception_obstacle.proto";
+
+// estimated obstacle intent
+message ObstacleIntent {
+  enum Type {
+    UNKNOWN = 0;
+    STOP = 1;
+    STATIONARY = 2;
+    MOVING = 3;
+    CHANGE_LANE = 4;
+    LOW_ACCELERATION = 5;
+    HIGH_ACCELERATION = 6;
+    LOW_DECELERATION = 7;
+    HIGH_DECELERATION = 8;
+  }
+  optional Type type = 1 [default = UNKNOWN];
+}
+
+// self driving car intent
+message Intent {
+  enum Type {
+    UNKNOWN = 0;
+    STOP = 1;
+    CRUISE = 2;
+    CHANGE_LANE = 3;
+  }
+  optional Type type = 1 [default = UNKNOWN];
+}
+
+message ObstacleInteractiveTag {
+  enum InteractiveTag {
+    INTERACTION = 1;
+    NONINTERACTION = 2;
+  }
+  optional InteractiveTag interactive_tag = 37 [default = NONINTERACTION];
+}
+
+message ObstaclePriority {
+  enum Priority {
+    CAUTION = 1;
+    NORMAL = 2;
+    IGNORE = 3;
+  }
+  optional Priority priority = 25 [default = NORMAL];
+}
+
+message Trajectory {
+  optional double probability = 1;  // probability of this trajectory
+  repeated points.TrajectoryPoint trajectory_point = 2;
+}
+
+message PredictionObstacle {
+  optional perception.PerceptionObstacle perception_obstacle = 1;
+  optional double timestamp = 2;  // GPS time in seconds
+  // the length of the time for this prediction (e.g. 10s)
+  optional double predicted_period = 3;
+  // can have multiple trajectories per obstacle
+  repeated Trajectory trajectory = 4;
+
+  // estimated obstacle intent
+  optional ObstacleIntent intent = 5;
+
+  optional ObstaclePriority priority = 6;
+
+  optional ObstacleInteractiveTag interactive_tag = 9;
+
+  optional bool is_static = 7 [default = false];
+
+}
+
+message PredictionObstacles {
+  // make prediction for multiple obstacles
+  repeated PredictionObstacle prediction_obstacle = 1;
+
+  // start timestamp
+  optional double start_timestamp = 2;
+
+  // end timestamp
+  optional double end_timestamp = 3;
+
+  // self driving car intent
+  optional Intent intent = 4;
+
+}

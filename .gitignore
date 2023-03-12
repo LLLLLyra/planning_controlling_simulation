@@ -1,0 +1,7 @@
+build/**
+devel/**
+.catkin_*
+.vscode
+**/log/**
+**/trajectory/**
+**/.pyc
