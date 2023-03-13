@@ -20,6 +20,7 @@ SimplePIDLatLonController::SimplePIDLatLonController() {
       fprintf(sim_pid_log_file_,
               "look_ahead_station,"
               "station_error,"
+              "lateral_error,"
               "current_speed,"
               "current_heading,"
               "heading_error,"
@@ -94,7 +95,7 @@ Status SimplePIDLatLonController::Reset() {
   station_pid_controller_.Reset();
   yaw_pid_controller_.Reset();
   last_index_ = 0;
-  s_ = 0;
+  s_matched_ = 0;
   return Status::OK();
 }
 
@@ -108,39 +109,16 @@ Status SimplePIDLatLonController::ComputeControlCommand(
 
   auto debug = cmd->mutable_debug()->mutable_simple_pid_lat_lon_debug();
   debug->Clear();
-  trajectory_ = planning_published_trajectory;
+  trajectory_ = *planning_published_trajectory;
+  trajectory_analyzer_ = std::move(TrajectoryAnalyzer(&trajectory_));
   auto vehicle_state = injector_->vehicle_state();
 
-  auto goal = (trajectory_->trajectory_point().end() - 1);
-  points::PathPoint current_p;
-  current_p.set_x(vehicle_state->x());
-  current_p.set_y(vehicle_state->y());
-
   double current_speed = chassis_->speed_mps();
-  s_ += current_speed * dt_;
-  auto target_point_ =
+  target_point_ =
       GetTargetPoint(vehicle_state->x(), vehicle_state->y(),
-                     trajectory_->gear() != canbus::Chassis::GEAR_REVERSE,
+                     trajectory_.gear() != canbus::Chassis::GEAR_REVERSE,
                      vehicle_state->heading());
 
-  // check wheter overtaking the goal
-  if (!circled_) {
-    Vec2d target_direction(current_speed * std::cos(vehicle_state->heading()),
-                           current_speed * std::sin(vehicle_state->heading()));
-    Vec2d vehicle_direction(target_point_.path_point().x() - current_p.x(),
-                            target_point_.path_point().y() - current_p.y());
-    if (std::fabs(GetDistance(current_p, goal->path_point()) < 0.5)
-        // || (vehicle_direction.InnerProd(target_direction) < 0 &&
-        //     target_point_.path_point().x() == goal->path_point().x() &&
-        //     target_point_.path_point().y() == goal->path_point().y())
-    ) {
-      debug->set_speed_cmd(0);
-      debug->set_steer_angle_cmd(chassis_->steering_percentage());
-      reached_ = true;
-      Reset();
-      return Status::OK();
-    }
-  }
   double speed = station_pid_controller_.Control(station_error_, dt_);
   speed = Clamp(speed, -speed_controller_input_limit_,
                 speed_controller_input_limit_);
@@ -171,26 +149,25 @@ Status SimplePIDLatLonController::ComputeControlCommand(
   debug->mutable_target_point()->mutable_path_point()->set_theta(
       target_point_.path_point().theta());
   debug->mutable_target_point()->set_v(target_point_.v());
-  // TODO: fill in all the args of debug
   debug->set_current_heading(vehicle_state->heading());
-  debug->set_look_ahead_station(s_ + station_error_);
+  debug->set_look_ahead_station(s_matched_ + station_error_);
   debug->set_station_error(station_error_);
   debug->set_current_speed(chassis_->speed_mps());
   debug->set_heading_error(yaw_error_);
   debug->set_speed_cmd(speed);
   debug->set_steer_angle_cmd(steer_angle);
   if (FLAGS_enable_csv_debug && sim_pid_log_file_) {
-    fprintf(
-        sim_pid_log_file_,
-        "%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,\r\n",
-        debug->look_ahead_station(), debug->station_error(),
-        debug->current_speed(), debug->current_heading(),
-        debug->heading_error(), debug->current_steer_wheel_angle(),
-        debug->speed_cmd(), debug->steer_angle_cmd(),
-        control_conf_->simple_pid_lat_lon_controller_conf()
-            .look_ahead_distance(),
-        target_point_.path_point().x(), target_point_.path_point().y(),
-        vehicle_state->x(), vehicle_state->y());
+    fprintf(sim_pid_log_file_,
+            "%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,"
+            "%.6f,\r\n",
+            debug->look_ahead_station(), debug->station_error(), d_matched_,
+            debug->current_speed(), debug->current_heading(),
+            debug->heading_error(), debug->current_steer_wheel_angle(),
+            debug->speed_cmd(), debug->steer_angle_cmd(),
+            control_conf_->simple_pid_lat_lon_controller_conf()
+                .look_ahead_distance(),
+            target_point_.path_point().x(), target_point_.path_point().y(),
+            vehicle_state->x(), vehicle_state->y());
   }
   return Status::OK();
 }
@@ -207,11 +184,11 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
   curr_path_point.set_y(y);
 
   // query the nearest point by position
-  size_t index_min = QueryNearestPointbyPosition(curr_path_point);
+  size_t index_min = trajectory_analyzer_.QueryNearestIndexByPosition(x, y);
   size_t target_index = index_min;
-  target_point_ = *(trajectory_->trajectory_point().begin() + target_index);
-  auto matched_point = trajectory_->trajectory_point().begin() + index_min;
-  const size_t n = trajectory_->trajectory_point().size();
+  target_point_ = *(trajectory_.trajectory_point().begin() + target_index);
+  auto matched_point = trajectory_.trajectory_point().begin() + index_min;
+  const size_t n = trajectory_.trajectory_point().size();
   double current_distance =
       GetDistance(matched_point->path_point(), target_point_.path_point());
 
@@ -222,45 +199,25 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
                           target_point_.path_point().y() - y);
 
   // skip the trajectory before the ramdom start
-  while (current_distance < look_ahead_distance_ ||
+  while (target_index < n && current_distance < look_ahead_distance_ ||
          target_direction.InnerProd(current_direction) <= 0) {
     ++target_index;
-    if (!circled_ && target_index >= n) {
-      break;
-    }
-    // avoid deadlock
-    if (target_index - index_min > n * 2) {
-      circled_ = false;
-      target_index = index_min;
-    }
     target_point_ =
-        *(trajectory_->trajectory_point().begin() + (target_index % n));
+        *(trajectory_.trajectory_point().begin() + (target_index % n));
     current_distance =
         GetDistance(matched_point->path_point(), target_point_.path_point());
     current_direction.set_x(target_point_.path_point().x() - x);
     current_direction.set_y(target_point_.path_point().y() - y);
   }
   last_index_ = target_index;
-  station_error_ =
-      GetDistance(curr_path_point, target_point_.path_point()) *
-      (chassis_->gear_location() == canbus::Chassis::GEAR_REVERSE ? -1 : 1);
+
+  auto projection_point = trajectory_analyzer->QueryMatchedPathPoint(
+      vehicle_state->x(), vehicle_state->y());
+
+  trajectory_analyzer->ToTrajectoryFrame(
+      vehicle_state->x(), vehicle_state->y(), vehicle_state->heading(),
+      vehicle_state->linear_velocity(), projection_point, &s_matched_,
+      &s_dot_matched_, &d_matched_, &d_dot_matched_) station_error_ =
+      target_point_.path_point().s() - s_matched_;
   return target_point_;
-}
-
-size_t SimplePIDLatLonController::QueryNearestPointbyPosition(
-    const points::PathPoint &current_point) {
-  double d_min = GetDistance(
-      trajectory_->trajectory_point().begin()->path_point(), current_point);
-  size_t index_min = 0;
-
-  for (size_t i = 1;
-       i < static_cast<size_t>(trajectory_->trajectory_point_size()); ++i) {
-    auto p = *(trajectory_->trajectory_point().begin() + i);
-    double d_temp = GetDistance(p.path_point(), current_point);
-    if (d_temp < d_min) {
-      d_min = d_temp;
-      index_min = i;
-    }
-  }
-  return index_min;
 }

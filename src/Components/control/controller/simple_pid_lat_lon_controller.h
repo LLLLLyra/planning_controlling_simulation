@@ -11,6 +11,7 @@
 #include "common/proto/vehicle_config.pb.h"
 #include "control/control/pid_controller.h"
 #include "control/control/status.h"
+#include "control/control/trajectory_analyzer.h"
 #include "control/filters/digital_filter.h"
 #include "control/filters/digital_filter_coefficients.h"
 #include "control/filters/mean_filter.h"
@@ -62,7 +63,6 @@ class SimplePIDLatLonController : public Controller {
   void Stop() override;
 
   bool get_reached() { return reached_; }
-  void set_circled(bool circled) { circled_ = circled; }
 
  private:
   void CloseFile();
@@ -73,8 +73,6 @@ class SimplePIDLatLonController : public Controller {
                                          const bool forward,
                                          const double theta);
   double GetDistance(const points::PathPoint& p1, const points::PathPoint& p2);
-
-  size_t QueryNearestPointbyPosition(const points::PathPoint& current_point);
 
  private:
   FILE* sim_pid_log_file_ = nullptr;
@@ -89,7 +87,6 @@ class SimplePIDLatLonController : public Controller {
 
   const vehicle::VehicleParam vehicle_param_ = vehicle::VehicleParam();
 
-  double s_ = 0.0;
   double station_error_ = 0.0;
   double yaw_error_ = 0.0;
   size_t last_index_ = 0;
@@ -98,11 +95,11 @@ class SimplePIDLatLonController : public Controller {
 
   const controller::LocalizationEstimate* localization_ = nullptr;
   const canbus::Chassis* chassis_ = nullptr;
-  const planning::ADCTrajectory* trajectory_ = nullptr;
+  planning::ADCTrajectory trajectory_;
 
   std::shared_ptr<DependencyInjector> injector_;
-
-  bool circled_ = false;
+  TrajectoryAnalyzer trajectory_analyzer_;
+  double s_matched_, s_dot_matched_, d_matched_, d_dot_matched_;
 };
 
 #endif
