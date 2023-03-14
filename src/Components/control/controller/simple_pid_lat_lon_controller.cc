@@ -113,7 +113,6 @@ Status SimplePIDLatLonController::ComputeControlCommand(
   trajectory_analyzer_ = std::move(TrajectoryAnalyzer(&trajectory_));
   auto vehicle_state = injector_->vehicle_state();
 
-  double current_speed = chassis_->speed_mps();
   target_point_ =
       GetTargetPoint(vehicle_state->x(), vehicle_state->y(),
                      trajectory_.gear() != canbus::Chassis::GEAR_REVERSE,
@@ -141,6 +140,9 @@ Status SimplePIDLatLonController::ComputeControlCommand(
   steer_angle = Clamp(steer_angle, -vehicle_param_.max_steer_angle(),
                       vehicle_param_.max_steer_angle());
   steer_angle = steer_angle / vehicle_param_.max_steer_angle() * 100;
+
+  cmd->set_speed(speed);
+  cmd->set_steering_target(steer_angle);
 
   debug->mutable_target_point()->mutable_path_point()->set_x(
       target_point_.path_point().x());
@@ -199,8 +201,9 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
                           target_point_.path_point().y() - y);
 
   // skip the trajectory before the ramdom start
-  while (target_index < n && current_distance < look_ahead_distance_ ||
-         target_direction.InnerProd(current_direction) <= 0) {
+  while ((target_index < n) &&
+         (current_distance < look_ahead_distance_ ||
+          target_direction.InnerProd(current_direction) <= 0)) {
     ++target_index;
     target_point_ =
         *(trajectory_.trajectory_point().begin() + (target_index % n));
@@ -211,13 +214,14 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
   }
   last_index_ = target_index;
 
-  auto projection_point = trajectory_analyzer->QueryMatchedPathPoint(
+  auto vehicle_state = injector_->vehicle_state();
+  auto projection_point = trajectory_analyzer_.QueryMatchedPathPoint(
       vehicle_state->x(), vehicle_state->y());
 
-  trajectory_analyzer->ToTrajectoryFrame(
+  trajectory_analyzer_.ToTrajectoryFrame(
       vehicle_state->x(), vehicle_state->y(), vehicle_state->heading(),
       vehicle_state->linear_velocity(), projection_point, &s_matched_,
-      &s_dot_matched_, &d_matched_, &d_dot_matched_) station_error_ =
-      target_point_.path_point().s() - s_matched_;
+      &s_dot_matched_, &d_matched_, &d_dot_matched_);
+  station_error_ = target_point_.path_point().s() - s_matched_;
   return target_point_;
 }
