@@ -51,6 +51,21 @@ simple_pid_lat_lon_controller_conf {
   cutoff_freq: 3
   mean_filter_window_size: 10
 }
+stanley_controller_conf {
+  k: 2
+  dt: 0.01
+  speed_controller_input_limit: 0.8
+  station_pid_conf {
+    integrator_enable: false
+    integrator_saturation_level: 0.1
+    output_saturation_level: 3.0
+    kp: 1.0
+    ki: 0.1
+    kd: 0.01
+  }
+  cutoff_freq: 30
+  mean_filter_window_size: 10
+}
 lat_controller_conf {
   ts: 0.01
   preview_window: 0

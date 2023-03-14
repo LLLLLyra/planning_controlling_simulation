@@ -43,13 +43,12 @@ message ControlCommand {
   optional double acceleration = 10;
 
   // model reset
-  optional bool reset_model = 16 [deprecated = true];
+  optional bool reset_model = 16 [ deprecated = true ];
   // engine on/off, true: engine on
   optional bool engine_on_off = 17;
   // completion percentage of trajectory planned in last cycle
   optional double trajectory_fraction = 18;
-  optional canbus.Chassis.DrivingMode driving_mode = 19
-      [deprecated = true];
+  optional canbus.Chassis.DrivingMode driving_mode = 19 [ deprecated = true ];
   optional canbus.Chassis.GearPosition gear_location = 20;
 
   optional Debug debug = 22;
@@ -57,15 +56,15 @@ message ControlCommand {
   optional LatencyStats latency_stats = 24;
   // optional PadMessage pad_msg = 25;
   // optional EngageAdvice engage_advice = 26;
-  optional bool is_in_safe_mode = 27 [default = false];
+  optional bool is_in_safe_mode = 27 [ default = false ];
 
   // deprecated fields
-  optional bool left_turn = 13 [deprecated = true];
-  optional bool right_turn = 14 [deprecated = true];
-  optional bool high_beam = 11 [deprecated = true];
-  optional bool low_beam = 12 [deprecated = true];
-  optional bool horn = 15 [deprecated = true];
-  optional TurnSignal turnsignal = 21 [deprecated = true];
+  optional bool left_turn = 13 [ deprecated = true ];
+  optional bool right_turn = 14 [ deprecated = true ];
+  optional bool high_beam = 11 [ deprecated = true ];
+  optional bool low_beam = 12 [ deprecated = true ];
+  optional bool horn = 15 [ deprecated = true ];
+  optional TurnSignal turnsignal = 21 [ deprecated = true ];
 }
 
 message SimpleLongitudinalDebug {
@@ -193,8 +192,8 @@ message SimpleMPCDebug {
   optional double calibration_value = 30;
   optional double steer_unconstrained_control_diff = 31;
   optional double steer_angle_feedforward_compensation = 32;
-  repeated double matrix_q_updated = 33;  // matrix_q_updated_ size = 6
-  repeated double matrix_r_updated = 34;  // matrix_r_updated_ size = 2
+  repeated double matrix_q_updated = 33; // matrix_q_updated_ size = 6
+  repeated double matrix_r_updated = 34; // matrix_r_updated_ size = 2
 
   // time derivative of lateral error rate, in m/s^2
   optional double lateral_acceleration = 35;
@@ -232,7 +231,20 @@ message SimplePIDLatLonDebug {
   optional double current_steer_wheel_angle = 6;
   optional double speed_cmd = 7;
   optional double steer_angle_cmd = 8;
-  optional points.TrajectoryPoint target_point = 9; 
+  optional points.TrajectoryPoint target_point = 9;
+}
+
+message StanleyDebug {
+  optional double station_error = 1;
+  optional double lateral_error = 2;
+  optional double current_speed = 3;
+  optional double current_heading = 4;
+  optional double heading_error = 5;
+  optional double current_steer_wheel_angle = 6;
+  optional double speed_cmd = 7;
+  optional double steer_angle_cmd = 8;
+  optional points.TrajectoryPoint target_point = 9;
+  optional points.PathPoint matched_point = 10;
 }
 
 message MracDebug {
@@ -263,4 +275,5 @@ message Debug {
   optional InputDebug input_debug = 3;
   optional SimpleMPCDebug simple_mpc_debug = 4;
   optional SimplePIDLatLonDebug simple_pid_lat_lon_debug = 5;
+  optional StanleyDebug stanley_debug = 6;
 }

@@ -24,8 +24,10 @@ extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::intern
 extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SimpleLongitudinalDebug_control_5fcmd_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SimplePIDLatLonDebug_control_5fcmd_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_SimpleLateralDebug_control_5fcmd_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<5> scc_info_Debug_control_5fcmd_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StanleyDebug_control_5fcmd_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_control_5fcmd_2eproto ::google::protobuf::internal::SCCInfo<6> scc_info_Debug_control_5fcmd_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_header_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Header_header_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_pnc_5fpoint_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_PathPoint_pnc_5fpoint_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_pnc_5fpoint_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_TrajectoryPoint_pnc_5fpoint_2eproto;
 namespace controller {
 class LatencyStatsDefaultTypeInternal {
@@ -52,6 +54,10 @@ class SimplePIDLatLonDebugDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SimplePIDLatLonDebug> _instance;
 } _SimplePIDLatLonDebug_default_instance_;
+class StanleyDebugDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<StanleyDebug> _instance;
+} _StanleyDebug_default_instance_;
 class MracDebugDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MracDebug> _instance;
@@ -160,6 +166,22 @@ static void InitDefaultsSimplePIDLatLonDebug_control_5fcmd_2eproto() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSimplePIDLatLonDebug_control_5fcmd_2eproto}, {
       &scc_info_TrajectoryPoint_pnc_5fpoint_2eproto.base,}};
 
+static void InitDefaultsStanleyDebug_control_5fcmd_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::controller::_StanleyDebug_default_instance_;
+    new (ptr) ::controller::StanleyDebug();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::controller::StanleyDebug::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<2> scc_info_StanleyDebug_control_5fcmd_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsStanleyDebug_control_5fcmd_2eproto}, {
+      &scc_info_TrajectoryPoint_pnc_5fpoint_2eproto.base,
+      &scc_info_PathPoint_pnc_5fpoint_2eproto.base,}};
+
 static void InitDefaultsMracDebug_control_5fcmd_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -215,13 +237,14 @@ static void InitDefaultsDebug_control_5fcmd_2eproto() {
   ::controller::Debug::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<5> scc_info_Debug_control_5fcmd_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsDebug_control_5fcmd_2eproto}, {
+::google::protobuf::internal::SCCInfo<6> scc_info_Debug_control_5fcmd_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 6, InitDefaultsDebug_control_5fcmd_2eproto}, {
       &scc_info_SimpleLongitudinalDebug_control_5fcmd_2eproto.base,
       &scc_info_SimpleLateralDebug_control_5fcmd_2eproto.base,
       &scc_info_InputDebug_control_5fcmd_2eproto.base,
       &scc_info_SimpleMPCDebug_control_5fcmd_2eproto.base,
-      &scc_info_SimplePIDLatLonDebug_control_5fcmd_2eproto.base,}};
+      &scc_info_SimplePIDLatLonDebug_control_5fcmd_2eproto.base,
+      &scc_info_StanleyDebug_control_5fcmd_2eproto.base,}};
 
 void InitDefaults_control_5fcmd_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_LatencyStats_control_5fcmd_2eproto.base);
@@ -230,13 +253,14 @@ void InitDefaults_control_5fcmd_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_SimpleLateralDebug_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SimpleMPCDebug_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SimplePIDLatLonDebug_control_5fcmd_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_StanleyDebug_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MracDebug_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MracAdaptiveGain_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_InputDebug_control_5fcmd_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Debug_control_5fcmd_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_control_5fcmd_2eproto[10];
+::google::protobuf::Metadata file_level_metadata_control_5fcmd_2eproto[11];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_control_5fcmd_2eproto[1];
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_control_5fcmd_2eproto = nullptr;
 
@@ -571,6 +595,31 @@ const ::google::protobuf::uint32 TableStruct_control_5fcmd_2eproto::offsets[] PR
   7,
   8,
   0,
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, station_error_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, lateral_error_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, current_speed_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, current_heading_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, heading_error_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, current_steer_wheel_angle_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, speed_cmd_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, steer_angle_cmd_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, target_point_),
+  PROTOBUF_FIELD_OFFSET(::controller::StanleyDebug, matched_point_),
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  0,
+  1,
   PROTOBUF_FIELD_OFFSET(::controller::MracDebug, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::controller::MracDebug, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -622,11 +671,13 @@ const ::google::protobuf::uint32 TableStruct_control_5fcmd_2eproto::offsets[] PR
   PROTOBUF_FIELD_OFFSET(::controller::Debug, input_debug_),
   PROTOBUF_FIELD_OFFSET(::controller::Debug, simple_mpc_debug_),
   PROTOBUF_FIELD_OFFSET(::controller::Debug, simple_pid_lat_lon_debug_),
+  PROTOBUF_FIELD_OFFSET(::controller::Debug, stanley_debug_),
   0,
   1,
   2,
   3,
   4,
+  5,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, sizeof(::controller::LatencyStats)},
@@ -635,10 +686,11 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 133, 171, sizeof(::controller::SimpleLateralDebug)},
   { 204, 258, sizeof(::controller::SimpleMPCDebug)},
   { 307, 321, sizeof(::controller::SimplePIDLatLonDebug)},
-  { 330, 341, sizeof(::controller::MracDebug)},
-  { 347, 355, sizeof(::controller::MracAdaptiveGain)},
-  { 358, 367, sizeof(::controller::InputDebug)},
-  { 371, 381, sizeof(::controller::Debug)},
+  { 330, 345, sizeof(::controller::StanleyDebug)},
+  { 355, 366, sizeof(::controller::MracDebug)},
+  { 372, 380, sizeof(::controller::MracAdaptiveGain)},
+  { 383, 392, sizeof(::controller::InputDebug)},
+  { 396, 407, sizeof(::controller::Debug)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -648,6 +700,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_SimpleLateralDebug_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_SimpleMPCDebug_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_SimplePIDLatLonDebug_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_StanleyDebug_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_MracDebug_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_MracAdaptiveGain_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::controller::_InputDebug_default_instance_),
@@ -657,7 +710,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_control_5fcmd_2eproto = {
   {}, AddDescriptors_control_5fcmd_2eproto, "control_cmd.proto", schemas,
   file_default_instances, TableStruct_control_5fcmd_2eproto::offsets,
-  file_level_metadata_control_5fcmd_2eproto, 10, file_level_enum_descriptors_control_5fcmd_2eproto, file_level_service_descriptors_control_5fcmd_2eproto,
+  file_level_metadata_control_5fcmd_2eproto, 11, file_level_enum_descriptors_control_5fcmd_2eproto, file_level_service_descriptors_control_5fcmd_2eproto,
 };
 
 const char descriptor_table_protodef_control_5fcmd_2eproto[] =
@@ -775,35 +828,44 @@ const char descriptor_table_protodef_control_5fcmd_2eproto[] =
   "ading_error\030\005 \001(\001\022!\n\031current_steer_wheel"
   "_angle\030\006 \001(\001\022\021\n\tspeed_cmd\030\007 \001(\001\022\027\n\017steer"
   "_angle_cmd\030\010 \001(\001\022-\n\014target_point\030\t \001(\0132\027"
-  ".points.TrajectoryPoint\"\351\001\n\tMracDebug\022\030\n"
-  "\020mrac_model_order\030\001 \001(\005\022\034\n\024mrac_referenc"
-  "e_state\030\002 \003(\001\022\030\n\020mrac_state_error\030\003 \003(\001\022"
-  "8\n\022mrac_adaptive_gain\030\004 \001(\0132\034.controller"
-  ".MracAdaptiveGain\022(\n mrac_reference_satu"
-  "ration_status\030\005 \001(\005\022&\n\036mrac_control_satu"
-  "ration_status\030\006 \001(\005\"m\n\020MracAdaptiveGain\022"
-  "\033\n\023state_adaptive_gain\030\001 \003(\001\022\033\n\023input_ad"
-  "aptive_gain\030\002 \003(\001\022\037\n\027nonlinear_adaptive_"
-  "gain\030\003 \003(\001\"\324\001\n\nInputDebug\022/\n\023localizatio"
-  "n_header\030\001 \001(\0132\022.controller.Header\022)\n\rca"
-  "nbus_header\030\002 \001(\0132\022.controller.Header\022-\n"
-  "\021trajectory_header\030\003 \001(\0132\022.controller.He"
-  "ader\022;\n\037latest_replan_trajectory_header\030"
-  "\004 \001(\0132\022.controller.Header\"\247\002\n\005Debug\022=\n\020s"
-  "imple_lon_debug\030\001 \001(\0132#.controller.Simpl"
-  "eLongitudinalDebug\0228\n\020simple_lat_debug\030\002"
-  " \001(\0132\036.controller.SimpleLateralDebug\022+\n\013"
-  "input_debug\030\003 \001(\0132\026.controller.InputDebu"
-  "g\0224\n\020simple_mpc_debug\030\004 \001(\0132\032.controller"
-  ".SimpleMPCDebug\022B\n\030simple_pid_lat_lon_de"
-  "bug\030\005 \001(\0132 .controller.SimplePIDLatLonDe"
-  "bug*:\n\nTurnSignal\022\r\n\tTURN_NONE\020\000\022\r\n\tTURN"
-  "_LEFT\020\001\022\016\n\nTURN_RIGHT\020\002"
+  ".points.TrajectoryPoint\"\253\002\n\014StanleyDebug"
+  "\022\025\n\rstation_error\030\001 \001(\001\022\025\n\rlateral_error"
+  "\030\002 \001(\001\022\025\n\rcurrent_speed\030\003 \001(\001\022\027\n\017current"
+  "_heading\030\004 \001(\001\022\025\n\rheading_error\030\005 \001(\001\022!\n"
+  "\031current_steer_wheel_angle\030\006 \001(\001\022\021\n\tspee"
+  "d_cmd\030\007 \001(\001\022\027\n\017steer_angle_cmd\030\010 \001(\001\022-\n\014"
+  "target_point\030\t \001(\0132\027.points.TrajectoryPo"
+  "int\022(\n\rmatched_point\030\n \001(\0132\021.points.Path"
+  "Point\"\351\001\n\tMracDebug\022\030\n\020mrac_model_order\030"
+  "\001 \001(\005\022\034\n\024mrac_reference_state\030\002 \003(\001\022\030\n\020m"
+  "rac_state_error\030\003 \003(\001\0228\n\022mrac_adaptive_g"
+  "ain\030\004 \001(\0132\034.controller.MracAdaptiveGain\022"
+  "(\n mrac_reference_saturation_status\030\005 \001("
+  "\005\022&\n\036mrac_control_saturation_status\030\006 \001("
+  "\005\"m\n\020MracAdaptiveGain\022\033\n\023state_adaptive_"
+  "gain\030\001 \003(\001\022\033\n\023input_adaptive_gain\030\002 \003(\001\022"
+  "\037\n\027nonlinear_adaptive_gain\030\003 \003(\001\"\324\001\n\nInp"
+  "utDebug\022/\n\023localization_header\030\001 \001(\0132\022.c"
+  "ontroller.Header\022)\n\rcanbus_header\030\002 \001(\0132"
+  "\022.controller.Header\022-\n\021trajectory_header"
+  "\030\003 \001(\0132\022.controller.Header\022;\n\037latest_rep"
+  "lan_trajectory_header\030\004 \001(\0132\022.controller"
+  ".Header\"\330\002\n\005Debug\022=\n\020simple_lon_debug\030\001 "
+  "\001(\0132#.controller.SimpleLongitudinalDebug"
+  "\0228\n\020simple_lat_debug\030\002 \001(\0132\036.controller."
+  "SimpleLateralDebug\022+\n\013input_debug\030\003 \001(\0132"
+  "\026.controller.InputDebug\0224\n\020simple_mpc_de"
+  "bug\030\004 \001(\0132\032.controller.SimpleMPCDebug\022B\n"
+  "\030simple_pid_lat_lon_debug\030\005 \001(\0132 .contro"
+  "ller.SimplePIDLatLonDebug\022/\n\rstanley_deb"
+  "ug\030\006 \001(\0132\030.controller.StanleyDebug*:\n\nTu"
+  "rnSignal\022\r\n\tTURN_NONE\020\000\022\r\n\tTURN_LEFT\020\001\022\016"
+  "\n\nTURN_RIGHT\020\002"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_control_5fcmd_2eproto = {
   false, InitDefaults_control_5fcmd_2eproto, 
   descriptor_table_protodef_control_5fcmd_2eproto,
-  "control_cmd.proto", &assign_descriptors_table_control_5fcmd_2eproto, 5503,
+  "control_cmd.proto", &assign_descriptors_table_control_5fcmd_2eproto, 5854,
 };
 
 void AddDescriptors_control_5fcmd_2eproto() {
@@ -9276,6 +9338,752 @@ void SimplePIDLatLonDebug::InternalSwap(SimplePIDLatLonDebug* other) {
 
 // ===================================================================
 
+void StanleyDebug::InitAsDefaultInstance() {
+  ::controller::_StanleyDebug_default_instance_._instance.get_mutable()->target_point_ = const_cast< ::points::TrajectoryPoint*>(
+      ::points::TrajectoryPoint::internal_default_instance());
+  ::controller::_StanleyDebug_default_instance_._instance.get_mutable()->matched_point_ = const_cast< ::points::PathPoint*>(
+      ::points::PathPoint::internal_default_instance());
+}
+class StanleyDebug::HasBitSetters {
+ public:
+  static void set_has_station_error(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000004u;
+  }
+  static void set_has_lateral_error(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000008u;
+  }
+  static void set_has_current_speed(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000010u;
+  }
+  static void set_has_current_heading(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000020u;
+  }
+  static void set_has_heading_error(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000040u;
+  }
+  static void set_has_current_steer_wheel_angle(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000080u;
+  }
+  static void set_has_speed_cmd(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000100u;
+  }
+  static void set_has_steer_angle_cmd(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000200u;
+  }
+  static const ::points::TrajectoryPoint& target_point(const StanleyDebug* msg);
+  static void set_has_target_point(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000001u;
+  }
+  static const ::points::PathPoint& matched_point(const StanleyDebug* msg);
+  static void set_has_matched_point(StanleyDebug* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+};
+
+const ::points::TrajectoryPoint&
+StanleyDebug::HasBitSetters::target_point(const StanleyDebug* msg) {
+  return *msg->target_point_;
+}
+const ::points::PathPoint&
+StanleyDebug::HasBitSetters::matched_point(const StanleyDebug* msg) {
+  return *msg->matched_point_;
+}
+void StanleyDebug::clear_target_point() {
+  if (target_point_ != nullptr) target_point_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+void StanleyDebug::clear_matched_point() {
+  if (matched_point_ != nullptr) matched_point_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int StanleyDebug::kStationErrorFieldNumber;
+const int StanleyDebug::kLateralErrorFieldNumber;
+const int StanleyDebug::kCurrentSpeedFieldNumber;
+const int StanleyDebug::kCurrentHeadingFieldNumber;
+const int StanleyDebug::kHeadingErrorFieldNumber;
+const int StanleyDebug::kCurrentSteerWheelAngleFieldNumber;
+const int StanleyDebug::kSpeedCmdFieldNumber;
+const int StanleyDebug::kSteerAngleCmdFieldNumber;
+const int StanleyDebug::kTargetPointFieldNumber;
+const int StanleyDebug::kMatchedPointFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+StanleyDebug::StanleyDebug()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:controller.StanleyDebug)
+}
+StanleyDebug::StanleyDebug(const StanleyDebug& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_target_point()) {
+    target_point_ = new ::points::TrajectoryPoint(*from.target_point_);
+  } else {
+    target_point_ = nullptr;
+  }
+  if (from.has_matched_point()) {
+    matched_point_ = new ::points::PathPoint(*from.matched_point_);
+  } else {
+    matched_point_ = nullptr;
+  }
+  ::memcpy(&station_error_, &from.station_error_,
+    static_cast<size_t>(reinterpret_cast<char*>(&steer_angle_cmd_) -
+    reinterpret_cast<char*>(&station_error_)) + sizeof(steer_angle_cmd_));
+  // @@protoc_insertion_point(copy_constructor:controller.StanleyDebug)
+}
+
+void StanleyDebug::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_StanleyDebug_control_5fcmd_2eproto.base);
+  ::memset(&target_point_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&steer_angle_cmd_) -
+      reinterpret_cast<char*>(&target_point_)) + sizeof(steer_angle_cmd_));
+}
+
+StanleyDebug::~StanleyDebug() {
+  // @@protoc_insertion_point(destructor:controller.StanleyDebug)
+  SharedDtor();
+}
+
+void StanleyDebug::SharedDtor() {
+  if (this != internal_default_instance()) delete target_point_;
+  if (this != internal_default_instance()) delete matched_point_;
+}
+
+void StanleyDebug::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const StanleyDebug& StanleyDebug::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_StanleyDebug_control_5fcmd_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void StanleyDebug::Clear() {
+// @@protoc_insertion_point(message_clear_start:controller.StanleyDebug)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(target_point_ != nullptr);
+      target_point_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(matched_point_ != nullptr);
+      matched_point_->Clear();
+    }
+  }
+  if (cached_has_bits & 0x000000fcu) {
+    ::memset(&station_error_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&current_steer_wheel_angle_) -
+        reinterpret_cast<char*>(&station_error_)) + sizeof(current_steer_wheel_angle_));
+  }
+  if (cached_has_bits & 0x00000300u) {
+    ::memset(&speed_cmd_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&steer_angle_cmd_) -
+        reinterpret_cast<char*>(&speed_cmd_)) + sizeof(steer_angle_cmd_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* StanleyDebug::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<StanleyDebug*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // optional double station_error = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 9) goto handle_unusual;
+        msg->set_station_error(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double lateral_error = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 17) goto handle_unusual;
+        msg->set_lateral_error(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double current_speed = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 25) goto handle_unusual;
+        msg->set_current_speed(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double current_heading = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 33) goto handle_unusual;
+        msg->set_current_heading(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double heading_error = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 41) goto handle_unusual;
+        msg->set_heading_error(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double current_steer_wheel_angle = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 49) goto handle_unusual;
+        msg->set_current_steer_wheel_angle(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double speed_cmd = 7;
+      case 7: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 57) goto handle_unusual;
+        msg->set_speed_cmd(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional double steer_angle_cmd = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 65) goto handle_unusual;
+        msg->set_steer_angle_cmd(::google::protobuf::io::UnalignedLoad<double>(ptr));
+        ptr += sizeof(double);
+        break;
+      }
+      // optional .points.TrajectoryPoint target_point = 9;
+      case 9: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 74) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::points::TrajectoryPoint::_InternalParse;
+        object = msg->mutable_target_point();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      // optional .points.PathPoint matched_point = 10;
+      case 10: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 82) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::points::PathPoint::_InternalParse;
+        object = msg->mutable_matched_point();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool StanleyDebug::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:controller.StanleyDebug)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional double station_error = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (9 & 0xFF)) {
+          HasBitSetters::set_has_station_error(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &station_error_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double lateral_error = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (17 & 0xFF)) {
+          HasBitSetters::set_has_lateral_error(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &lateral_error_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double current_speed = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (25 & 0xFF)) {
+          HasBitSetters::set_has_current_speed(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &current_speed_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double current_heading = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (33 & 0xFF)) {
+          HasBitSetters::set_has_current_heading(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &current_heading_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double heading_error = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (41 & 0xFF)) {
+          HasBitSetters::set_has_heading_error(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &heading_error_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double current_steer_wheel_angle = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (49 & 0xFF)) {
+          HasBitSetters::set_has_current_steer_wheel_angle(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &current_steer_wheel_angle_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double speed_cmd = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (57 & 0xFF)) {
+          HasBitSetters::set_has_speed_cmd(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &speed_cmd_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional double steer_angle_cmd = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (65 & 0xFF)) {
+          HasBitSetters::set_has_steer_angle_cmd(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &steer_angle_cmd_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .points.TrajectoryPoint target_point = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (74 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_target_point()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .points.PathPoint matched_point = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (82 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_matched_point()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:controller.StanleyDebug)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:controller.StanleyDebug)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void StanleyDebug::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:controller.StanleyDebug)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional double station_error = 1;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->station_error(), output);
+  }
+
+  // optional double lateral_error = 2;
+  if (cached_has_bits & 0x00000008u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->lateral_error(), output);
+  }
+
+  // optional double current_speed = 3;
+  if (cached_has_bits & 0x00000010u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->current_speed(), output);
+  }
+
+  // optional double current_heading = 4;
+  if (cached_has_bits & 0x00000020u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->current_heading(), output);
+  }
+
+  // optional double heading_error = 5;
+  if (cached_has_bits & 0x00000040u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->heading_error(), output);
+  }
+
+  // optional double current_steer_wheel_angle = 6;
+  if (cached_has_bits & 0x00000080u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->current_steer_wheel_angle(), output);
+  }
+
+  // optional double speed_cmd = 7;
+  if (cached_has_bits & 0x00000100u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->speed_cmd(), output);
+  }
+
+  // optional double steer_angle_cmd = 8;
+  if (cached_has_bits & 0x00000200u) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(8, this->steer_angle_cmd(), output);
+  }
+
+  // optional .points.TrajectoryPoint target_point = 9;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, HasBitSetters::target_point(this), output);
+  }
+
+  // optional .points.PathPoint matched_point = 10;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, HasBitSetters::matched_point(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:controller.StanleyDebug)
+}
+
+::google::protobuf::uint8* StanleyDebug::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:controller.StanleyDebug)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional double station_error = 1;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->station_error(), target);
+  }
+
+  // optional double lateral_error = 2;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->lateral_error(), target);
+  }
+
+  // optional double current_speed = 3;
+  if (cached_has_bits & 0x00000010u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->current_speed(), target);
+  }
+
+  // optional double current_heading = 4;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->current_heading(), target);
+  }
+
+  // optional double heading_error = 5;
+  if (cached_has_bits & 0x00000040u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->heading_error(), target);
+  }
+
+  // optional double current_steer_wheel_angle = 6;
+  if (cached_has_bits & 0x00000080u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->current_steer_wheel_angle(), target);
+  }
+
+  // optional double speed_cmd = 7;
+  if (cached_has_bits & 0x00000100u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->speed_cmd(), target);
+  }
+
+  // optional double steer_angle_cmd = 8;
+  if (cached_has_bits & 0x00000200u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(8, this->steer_angle_cmd(), target);
+  }
+
+  // optional .points.TrajectoryPoint target_point = 9;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        9, HasBitSetters::target_point(this), target);
+  }
+
+  // optional .points.PathPoint matched_point = 10;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        10, HasBitSetters::matched_point(this), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:controller.StanleyDebug)
+  return target;
+}
+
+size_t StanleyDebug::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:controller.StanleyDebug)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    // optional .points.TrajectoryPoint target_point = 9;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *target_point_);
+    }
+
+    // optional .points.PathPoint matched_point = 10;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *matched_point_);
+    }
+
+    // optional double station_error = 1;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double lateral_error = 2;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double current_speed = 3;
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double current_heading = 4;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double heading_error = 5;
+    if (cached_has_bits & 0x00000040u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double current_steer_wheel_angle = 6;
+    if (cached_has_bits & 0x00000080u) {
+      total_size += 1 + 8;
+    }
+
+  }
+  if (cached_has_bits & 0x00000300u) {
+    // optional double speed_cmd = 7;
+    if (cached_has_bits & 0x00000100u) {
+      total_size += 1 + 8;
+    }
+
+    // optional double steer_angle_cmd = 8;
+    if (cached_has_bits & 0x00000200u) {
+      total_size += 1 + 8;
+    }
+
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void StanleyDebug::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:controller.StanleyDebug)
+  GOOGLE_DCHECK_NE(&from, this);
+  const StanleyDebug* source =
+      ::google::protobuf::DynamicCastToGenerated<StanleyDebug>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:controller.StanleyDebug)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:controller.StanleyDebug)
+    MergeFrom(*source);
+  }
+}
+
+void StanleyDebug::MergeFrom(const StanleyDebug& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:controller.StanleyDebug)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    if (cached_has_bits & 0x00000001u) {
+      mutable_target_point()->::points::TrajectoryPoint::MergeFrom(from.target_point());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      mutable_matched_point()->::points::PathPoint::MergeFrom(from.matched_point());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      station_error_ = from.station_error_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      lateral_error_ = from.lateral_error_;
+    }
+    if (cached_has_bits & 0x00000010u) {
+      current_speed_ = from.current_speed_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      current_heading_ = from.current_heading_;
+    }
+    if (cached_has_bits & 0x00000040u) {
+      heading_error_ = from.heading_error_;
+    }
+    if (cached_has_bits & 0x00000080u) {
+      current_steer_wheel_angle_ = from.current_steer_wheel_angle_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000300u) {
+    if (cached_has_bits & 0x00000100u) {
+      speed_cmd_ = from.speed_cmd_;
+    }
+    if (cached_has_bits & 0x00000200u) {
+      steer_angle_cmd_ = from.steer_angle_cmd_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void StanleyDebug::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:controller.StanleyDebug)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void StanleyDebug::CopyFrom(const StanleyDebug& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:controller.StanleyDebug)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StanleyDebug::IsInitialized() const {
+  return true;
+}
+
+void StanleyDebug::Swap(StanleyDebug* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void StanleyDebug::InternalSwap(StanleyDebug* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(target_point_, other->target_point_);
+  swap(matched_point_, other->matched_point_);
+  swap(station_error_, other->station_error_);
+  swap(lateral_error_, other->lateral_error_);
+  swap(current_speed_, other->current_speed_);
+  swap(current_heading_, other->current_heading_);
+  swap(heading_error_, other->heading_error_);
+  swap(current_steer_wheel_angle_, other->current_steer_wheel_angle_);
+  swap(speed_cmd_, other->speed_cmd_);
+  swap(steer_angle_cmd_, other->steer_angle_cmd_);
+}
+
+::google::protobuf::Metadata StanleyDebug::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_control_5fcmd_2eproto);
+  return ::file_level_metadata_control_5fcmd_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void MracDebug::InitAsDefaultInstance() {
   ::controller::_MracDebug_default_instance_._instance.get_mutable()->mrac_adaptive_gain_ = const_cast< ::controller::MracAdaptiveGain*>(
       ::controller::MracAdaptiveGain::internal_default_instance());
@@ -10785,6 +11593,8 @@ void Debug::InitAsDefaultInstance() {
       ::controller::SimpleMPCDebug::internal_default_instance());
   ::controller::_Debug_default_instance_._instance.get_mutable()->simple_pid_lat_lon_debug_ = const_cast< ::controller::SimplePIDLatLonDebug*>(
       ::controller::SimplePIDLatLonDebug::internal_default_instance());
+  ::controller::_Debug_default_instance_._instance.get_mutable()->stanley_debug_ = const_cast< ::controller::StanleyDebug*>(
+      ::controller::StanleyDebug::internal_default_instance());
 }
 class Debug::HasBitSetters {
  public:
@@ -10808,6 +11618,10 @@ class Debug::HasBitSetters {
   static void set_has_simple_pid_lat_lon_debug(Debug* msg) {
     msg->_has_bits_[0] |= 0x00000010u;
   }
+  static const ::controller::StanleyDebug& stanley_debug(const Debug* msg);
+  static void set_has_stanley_debug(Debug* msg) {
+    msg->_has_bits_[0] |= 0x00000020u;
+  }
 };
 
 const ::controller::SimpleLongitudinalDebug&
@@ -10830,12 +11644,17 @@ const ::controller::SimplePIDLatLonDebug&
 Debug::HasBitSetters::simple_pid_lat_lon_debug(const Debug* msg) {
   return *msg->simple_pid_lat_lon_debug_;
 }
+const ::controller::StanleyDebug&
+Debug::HasBitSetters::stanley_debug(const Debug* msg) {
+  return *msg->stanley_debug_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Debug::kSimpleLonDebugFieldNumber;
 const int Debug::kSimpleLatDebugFieldNumber;
 const int Debug::kInputDebugFieldNumber;
 const int Debug::kSimpleMpcDebugFieldNumber;
 const int Debug::kSimplePidLatLonDebugFieldNumber;
+const int Debug::kStanleyDebugFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Debug::Debug()
@@ -10873,6 +11692,11 @@ Debug::Debug(const Debug& from)
   } else {
     simple_pid_lat_lon_debug_ = nullptr;
   }
+  if (from.has_stanley_debug()) {
+    stanley_debug_ = new ::controller::StanleyDebug(*from.stanley_debug_);
+  } else {
+    stanley_debug_ = nullptr;
+  }
   // @@protoc_insertion_point(copy_constructor:controller.Debug)
 }
 
@@ -10880,8 +11704,8 @@ void Debug::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_Debug_control_5fcmd_2eproto.base);
   ::memset(&simple_lon_debug_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&simple_pid_lat_lon_debug_) -
-      reinterpret_cast<char*>(&simple_lon_debug_)) + sizeof(simple_pid_lat_lon_debug_));
+      reinterpret_cast<char*>(&stanley_debug_) -
+      reinterpret_cast<char*>(&simple_lon_debug_)) + sizeof(stanley_debug_));
 }
 
 Debug::~Debug() {
@@ -10895,6 +11719,7 @@ void Debug::SharedDtor() {
   if (this != internal_default_instance()) delete input_debug_;
   if (this != internal_default_instance()) delete simple_mpc_debug_;
   if (this != internal_default_instance()) delete simple_pid_lat_lon_debug_;
+  if (this != internal_default_instance()) delete stanley_debug_;
 }
 
 void Debug::SetCachedSize(int size) const {
@@ -10913,7 +11738,7 @@ void Debug::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       GOOGLE_DCHECK(simple_lon_debug_ != nullptr);
       simple_lon_debug_->Clear();
@@ -10933,6 +11758,10 @@ void Debug::Clear() {
     if (cached_has_bits & 0x00000010u) {
       GOOGLE_DCHECK(simple_pid_lat_lon_debug_ != nullptr);
       simple_pid_lat_lon_debug_->Clear();
+    }
+    if (cached_has_bits & 0x00000020u) {
+      GOOGLE_DCHECK(stanley_debug_ != nullptr);
+      stanley_debug_->Clear();
     }
   }
   _has_bits_.Clear();
@@ -11011,6 +11840,19 @@ const char* Debug::_InternalParse(const char* begin, const char* end, void* obje
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         parser_till_end = ::controller::SimplePIDLatLonDebug::_InternalParse;
         object = msg->mutable_simple_pid_lat_lon_debug();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      // optional .controller.StanleyDebug stanley_debug = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::controller::StanleyDebug::_InternalParse;
+        object = msg->mutable_stanley_debug();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
         GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
@@ -11102,6 +11944,17 @@ bool Debug::MergePartialFromCodedStream(
         break;
       }
 
+      // optional .controller.StanleyDebug stanley_debug = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_stanley_debug()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -11160,6 +12013,12 @@ void Debug::SerializeWithCachedSizes(
       5, HasBitSetters::simple_pid_lat_lon_debug(this), output);
   }
 
+  // optional .controller.StanleyDebug stanley_debug = 6;
+  if (cached_has_bits & 0x00000020u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, HasBitSetters::stanley_debug(this), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -11209,6 +12068,13 @@ void Debug::SerializeWithCachedSizes(
         5, HasBitSetters::simple_pid_lat_lon_debug(this), target);
   }
 
+  // optional .controller.StanleyDebug stanley_debug = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        6, HasBitSetters::stanley_debug(this), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
@@ -11231,7 +12097,7 @@ size_t Debug::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     // optional .controller.SimpleLongitudinalDebug simple_lon_debug = 1;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -11267,6 +12133,13 @@ size_t Debug::ByteSizeLong() const {
           *simple_pid_lat_lon_debug_);
     }
 
+    // optional .controller.StanleyDebug stanley_debug = 6;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *stanley_debug_);
+    }
+
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
@@ -11296,7 +12169,7 @@ void Debug::MergeFrom(const Debug& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       mutable_simple_lon_debug()->::controller::SimpleLongitudinalDebug::MergeFrom(from.simple_lon_debug());
     }
@@ -11311,6 +12184,9 @@ void Debug::MergeFrom(const Debug& from) {
     }
     if (cached_has_bits & 0x00000010u) {
       mutable_simple_pid_lat_lon_debug()->::controller::SimplePIDLatLonDebug::MergeFrom(from.simple_pid_lat_lon_debug());
+    }
+    if (cached_has_bits & 0x00000020u) {
+      mutable_stanley_debug()->::controller::StanleyDebug::MergeFrom(from.stanley_debug());
     }
   }
 }
@@ -11346,6 +12222,7 @@ void Debug::InternalSwap(Debug* other) {
   swap(input_debug_, other->input_debug_);
   swap(simple_mpc_debug_, other->simple_mpc_debug_);
   swap(simple_pid_lat_lon_debug_, other->simple_pid_lat_lon_debug_);
+  swap(stanley_debug_, other->stanley_debug_);
 }
 
 ::google::protobuf::Metadata Debug::GetMetadata() const {
@@ -11375,6 +12252,9 @@ template<> PROTOBUF_NOINLINE ::controller::SimpleMPCDebug* Arena::CreateMaybeMes
 }
 template<> PROTOBUF_NOINLINE ::controller::SimplePIDLatLonDebug* Arena::CreateMaybeMessage< ::controller::SimplePIDLatLonDebug >(Arena* arena) {
   return Arena::CreateInternal< ::controller::SimplePIDLatLonDebug >(arena);
+}
+template<> PROTOBUF_NOINLINE ::controller::StanleyDebug* Arena::CreateMaybeMessage< ::controller::StanleyDebug >(Arena* arena) {
+  return Arena::CreateInternal< ::controller::StanleyDebug >(arena);
 }
 template<> PROTOBUF_NOINLINE ::controller::MracDebug* Arena::CreateMaybeMessage< ::controller::MracDebug >(Arena* arena) {
   return Arena::CreateInternal< ::controller::MracDebug >(arena);

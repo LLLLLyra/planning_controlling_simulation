@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package controller;
+
+import "pid_conf.proto";
+
+message StanleyControllerConf {
+  optional PidConf station_pid_conf = 1;
+  optional double dt = 2 [ default = 0.01 ];
+  optional double speed_controller_input_limit = 3;
+  optional double cutoff_freq = 4;
+  optional double mean_filter_window_size = 5;
+  optional double k = 6 [ default = 1 ];
+}

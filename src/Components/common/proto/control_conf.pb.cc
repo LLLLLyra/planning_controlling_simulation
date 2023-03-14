@@ -20,6 +20,7 @@ extern PROTOBUF_INTERNAL_EXPORT_lat_5fcontroller_5fconf_2eproto ::google::protob
 extern PROTOBUF_INTERNAL_EXPORT_lon_5fcontroller_5fconf_2eproto ::google::protobuf::internal::SCCInfo<4> scc_info_LonControllerConf_lon_5fcontroller_5fconf_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_mpc_5fcontroller_5fconf_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_MPCControllerConf_mpc_5fcontroller_5fconf_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_simple_5fpid_5flat_5flon_5fcontroller_5fconf_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SimplePIDLatLonControllerConf_simple_5fpid_5flat_5flon_5fcontroller_5fconf_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_stanley_5fcontroller_5fconf_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StanleyControllerConf_stanley_5fcontroller_5fconf_2eproto;
 namespace controller {
 class ControlConfDefaultTypeInternal {
  public:
@@ -37,12 +38,13 @@ static void InitDefaultsControlConf_control_5fconf_2eproto() {
   ::controller::ControlConf::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<4> scc_info_ControlConf_control_5fconf_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 4, InitDefaultsControlConf_control_5fconf_2eproto}, {
+::google::protobuf::internal::SCCInfo<5> scc_info_ControlConf_control_5fconf_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 5, InitDefaultsControlConf_control_5fconf_2eproto}, {
       &scc_info_LatControllerConf_lat_5fcontroller_5fconf_2eproto.base,
       &scc_info_LonControllerConf_lon_5fcontroller_5fconf_2eproto.base,
       &scc_info_MPCControllerConf_mpc_5fcontroller_5fconf_2eproto.base,
-      &scc_info_SimplePIDLatLonControllerConf_simple_5fpid_5flat_5flon_5fcontroller_5fconf_2eproto.base,}};
+      &scc_info_SimplePIDLatLonControllerConf_simple_5fpid_5flat_5flon_5fcontroller_5fconf_2eproto.base,
+      &scc_info_StanleyControllerConf_stanley_5fcontroller_5fconf_2eproto.base,}};
 
 void InitDefaults_control_5fconf_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_ControlConf_control_5fconf_2eproto.base);
@@ -96,47 +98,49 @@ const ::google::protobuf::uint32 TableStruct_control_5fconf_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::controller::ControlConf, minimum_speed_protection_),
   PROTOBUF_FIELD_OFFSET(::controller::ControlConf, max_path_remain_when_stopped_),
   PROTOBUF_FIELD_OFFSET(::controller::ControlConf, simple_pid_lat_lon_controller_conf_),
-  22,
-  4,
+  PROTOBUF_FIELD_OFFSET(::controller::ControlConf, stanley_controller_conf_),
+  23,
   5,
   6,
   7,
   8,
-  23,
-  24,
-  27,
-  25,
-  26,
-  28,
-  29,
   9,
-  32,
-  10,
+  24,
+  25,
+  28,
+  26,
+  27,
+  29,
   30,
-  31,
+  10,
   33,
+  11,
+  31,
+  32,
   34,
   35,
-  11,
+  36,
   12,
   13,
-  ~0u,
-  21,
   14,
+  ~0u,
+  22,
+  15,
   0,
   1,
-  15,
   16,
   17,
   18,
-  2,
   19,
+  2,
   20,
-  36,
+  21,
+  37,
   3,
+  4,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 43, sizeof(::controller::ControlConf)},
+  { 0, 44, sizeof(::controller::ControlConf)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -154,66 +158,70 @@ const char descriptor_table_protodef_control_5fconf_2eproto[] =
   "s.proto\032\031lat_controller_conf.proto\032\031lon_"
   "controller_conf.proto\032\031mpc_controller_co"
   "nf.proto\032(simple_pid_lat_lon_controller_"
-  "conf.proto\"\370\014\n\013ControlConf\022!\n\025control_te"
-  "st_duration\030\001 \001(\001:\002-1\022\037\n\020enable_csv_debu"
-  "g\030\002 \001(\010:\005false\022+\n\034enable_speed_station_p"
-  "review\030\003 \001(\010:\005false\022#\n\024is_control_test_m"
-  "ode\030\004 \001(\010:\005false\022*\n\033use_preview_speed_fo"
-  "r_table\030\005 \001(\010:\005false\022+\n\034enable_input_tim"
-  "estamp_check\030\006 \001(\010:\005false\022%\n\031max_localiz"
-  "ation_miss_num\030\007 \001(\005:\00220\022 \n\024max_chassis_"
-  "miss_num\030\010 \001(\005:\00220\022!\n\025max_planning_miss_"
-  "num\030\t \001(\005:\00220\022+\n\035max_acceleration_when_s"
-  "topped\030\n \001(\001:\0040.01\022\035\n\020steer_angle_rate\030\013"
-  " \001(\001:\003100\022#\n\025enable_gain_scheduler\030\014 \001(\010"
-  ":\004true\022\035\n\017set_steer_limit\030\r \001(\010:\004true\022\"\n"
-  "\023enable_slope_offset\030\016 \001(\010:\005false\022\037\n\020loc"
-  "k_steer_speed\030\017 \001(\001:\0050.081\0222\n#enable_nav"
-  "igation_mode_error_filter\030\020 \001(\010:\005false\0224"
-  "\n&enable_navigation_mode_position_update"
-  "\030\021 \001(\010:\004true\022%\n\027enable_persistent_estop\030"
-  "\022 \001(\010:\004true\022\034\n\016control_period\030\023 \001(\001:\0040.0"
-  "1\022&\n\031max_planning_interval_sec\030\024 \001(\001:\0030."
-  "2\022\'\n\034max_planning_delay_threshold\030\025 \001(\001:"
-  "\0014\0221\n\014driving_mode\030\026 \001(\0162\033.canbus.Chassi"
-  "s.DrivingMode\022)\n\006action\030\027 \001(\0162\031.controll"
-  "er.DrivingAction\022\030\n\020soft_estop_brake\030\030 \001"
-  "(\001\022B\n\022active_controllers\030\031 \003(\0162&.control"
-  "ler.ControlConf.ControllerType\022\'\n\037max_st"
-  "eering_percentage_allowed\030\032 \001(\005\022\037\n\027max_s"
-  "tatus_interval_sec\030\033 \001(\001\022:\n\023lat_controll"
-  "er_conf\030\034 \001(\0132\035.controller.LatController"
-  "Conf\022:\n\023lon_controller_conf\030\035 \001(\0132\035.cont"
-  "roller.LonControllerConf\022\031\n\021trajectory_p"
-  "eriod\030\036 \001(\001\022\026\n\016chassis_period\030\037 \001(\001\022\033\n\023l"
-  "ocalization_period\030  \001(\001\022 \n\030minimum_spee"
-  "d_resolution\030! \001(\001\022:\n\023mpc_controller_con"
-  "f\030\" \001(\0132\035.controller.MPCControllerConf\022\033"
-  "\n\023query_relative_time\030# \001(\001\022 \n\030minimum_s"
-  "peed_protection\030$ \001(\001\022)\n\034max_path_remain"
-  "_when_stopped\030% \001(\001:\0030.3\022U\n\"simple_pid_l"
-  "at_lon_controller_conf\030& \001(\0132).controlle"
-  "r.SimplePIDLatLonControllerConf\"L\n\016Contr"
-  "ollerType\022\022\n\016LAT_CONTROLLER\020\000\022\022\n\016LON_CON"
-  "TROLLER\020\001\022\022\n\016MPC_CONTROLLER\020\002*/\n\rDriving"
-  "Action\022\010\n\004STOP\020\000\022\t\n\005START\020\001\022\t\n\005RESET\020\002"
+  "conf.proto\032\035stanley_controller_conf.prot"
+  "o\"\274\r\n\013ControlConf\022!\n\025control_test_durati"
+  "on\030\001 \001(\001:\002-1\022\037\n\020enable_csv_debug\030\002 \001(\010:\005"
+  "false\022+\n\034enable_speed_station_preview\030\003 "
+  "\001(\010:\005false\022#\n\024is_control_test_mode\030\004 \001(\010"
+  ":\005false\022*\n\033use_preview_speed_for_table\030\005"
+  " \001(\010:\005false\022+\n\034enable_input_timestamp_ch"
+  "eck\030\006 \001(\010:\005false\022%\n\031max_localization_mis"
+  "s_num\030\007 \001(\005:\00220\022 \n\024max_chassis_miss_num\030"
+  "\010 \001(\005:\00220\022!\n\025max_planning_miss_num\030\t \001(\005"
+  ":\00220\022+\n\035max_acceleration_when_stopped\030\n "
+  "\001(\001:\0040.01\022\035\n\020steer_angle_rate\030\013 \001(\001:\003100"
+  "\022#\n\025enable_gain_scheduler\030\014 \001(\010:\004true\022\035\n"
+  "\017set_steer_limit\030\r \001(\010:\004true\022\"\n\023enable_s"
+  "lope_offset\030\016 \001(\010:\005false\022\037\n\020lock_steer_s"
+  "peed\030\017 \001(\001:\0050.081\0222\n#enable_navigation_m"
+  "ode_error_filter\030\020 \001(\010:\005false\0224\n&enable_"
+  "navigation_mode_position_update\030\021 \001(\010:\004t"
+  "rue\022%\n\027enable_persistent_estop\030\022 \001(\010:\004tr"
+  "ue\022\034\n\016control_period\030\023 \001(\001:\0040.01\022&\n\031max_"
+  "planning_interval_sec\030\024 \001(\001:\0030.2\022\'\n\034max_"
+  "planning_delay_threshold\030\025 \001(\001:\0014\0221\n\014dri"
+  "ving_mode\030\026 \001(\0162\033.canbus.Chassis.Driving"
+  "Mode\022)\n\006action\030\027 \001(\0162\031.controller.Drivin"
+  "gAction\022\030\n\020soft_estop_brake\030\030 \001(\001\022B\n\022act"
+  "ive_controllers\030\031 \003(\0162&.controller.Contr"
+  "olConf.ControllerType\022\'\n\037max_steering_pe"
+  "rcentage_allowed\030\032 \001(\005\022\037\n\027max_status_int"
+  "erval_sec\030\033 \001(\001\022:\n\023lat_controller_conf\030\034"
+  " \001(\0132\035.controller.LatControllerConf\022:\n\023l"
+  "on_controller_conf\030\035 \001(\0132\035.controller.Lo"
+  "nControllerConf\022\031\n\021trajectory_period\030\036 \001"
+  "(\001\022\026\n\016chassis_period\030\037 \001(\001\022\033\n\023localizati"
+  "on_period\030  \001(\001\022 \n\030minimum_speed_resolut"
+  "ion\030! \001(\001\022:\n\023mpc_controller_conf\030\" \001(\0132\035"
+  ".controller.MPCControllerConf\022\033\n\023query_r"
+  "elative_time\030# \001(\001\022 \n\030minimum_speed_prot"
+  "ection\030$ \001(\001\022)\n\034max_path_remain_when_sto"
+  "pped\030% \001(\001:\0030.3\022U\n\"simple_pid_lat_lon_co"
+  "ntroller_conf\030& \001(\0132).controller.SimpleP"
+  "IDLatLonControllerConf\022B\n\027stanley_contro"
+  "ller_conf\030\' \001(\0132!.controller.StanleyCont"
+  "rollerConf\"L\n\016ControllerType\022\022\n\016LAT_CONT"
+  "ROLLER\020\000\022\022\n\016LON_CONTROLLER\020\001\022\022\n\016MPC_CONT"
+  "ROLLER\020\002*/\n\rDrivingAction\022\010\n\004STOP\020\000\022\t\n\005S"
+  "TART\020\001\022\t\n\005RESET\020\002"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_control_5fconf_2eproto = {
   false, InitDefaults_control_5fconf_2eproto, 
   descriptor_table_protodef_control_5fconf_2eproto,
-  "control_conf.proto", &assign_descriptors_table_control_5fconf_2eproto, 1878,
+  "control_conf.proto", &assign_descriptors_table_control_5fconf_2eproto, 1977,
 };
 
 void AddDescriptors_control_5fconf_2eproto() {
-  static constexpr ::google::protobuf::internal::InitFunc deps[5] =
+  static constexpr ::google::protobuf::internal::InitFunc deps[6] =
   {
     ::AddDescriptors_chassis_2eproto,
     ::AddDescriptors_lat_5fcontroller_5fconf_2eproto,
     ::AddDescriptors_lon_5fcontroller_5fconf_2eproto,
     ::AddDescriptors_mpc_5fcontroller_5fconf_2eproto,
     ::AddDescriptors_simple_5fpid_5flat_5flon_5fcontroller_5fconf_2eproto,
+    ::AddDescriptors_stanley_5fcontroller_5fconf_2eproto,
   };
- ::google::protobuf::internal::AddDescriptors(&descriptor_table_control_5fconf_2eproto, deps, 5);
+ ::google::protobuf::internal::AddDescriptors(&descriptor_table_control_5fconf_2eproto, deps, 6);
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -269,86 +277,88 @@ void ControlConf::InitAsDefaultInstance() {
       ::controller::MPCControllerConf::internal_default_instance());
   ::controller::_ControlConf_default_instance_._instance.get_mutable()->simple_pid_lat_lon_controller_conf_ = const_cast< ::controller::SimplePIDLatLonControllerConf*>(
       ::controller::SimplePIDLatLonControllerConf::internal_default_instance());
+  ::controller::_ControlConf_default_instance_._instance.get_mutable()->stanley_controller_conf_ = const_cast< ::controller::StanleyControllerConf*>(
+      ::controller::StanleyControllerConf::internal_default_instance());
 }
 class ControlConf::HasBitSetters {
  public:
   static void set_has_control_test_duration(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00400000u;
-  }
-  static void set_has_enable_csv_debug(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000010u;
-  }
-  static void set_has_enable_speed_station_preview(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000020u;
-  }
-  static void set_has_is_control_test_mode(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000040u;
-  }
-  static void set_has_use_preview_speed_for_table(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000080u;
-  }
-  static void set_has_enable_input_timestamp_check(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000100u;
-  }
-  static void set_has_max_localization_miss_num(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00800000u;
   }
-  static void set_has_max_chassis_miss_num(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x01000000u;
+  static void set_has_enable_csv_debug(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000020u;
   }
-  static void set_has_max_planning_miss_num(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x08000000u;
+  static void set_has_enable_speed_station_preview(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000040u;
   }
-  static void set_has_max_acceleration_when_stopped(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x02000000u;
+  static void set_has_is_control_test_mode(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000080u;
   }
-  static void set_has_steer_angle_rate(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x04000000u;
+  static void set_has_use_preview_speed_for_table(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000100u;
   }
-  static void set_has_enable_gain_scheduler(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x10000000u;
-  }
-  static void set_has_set_steer_limit(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x20000000u;
-  }
-  static void set_has_enable_slope_offset(ControlConf* msg) {
+  static void set_has_enable_input_timestamp_check(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00000200u;
   }
-  static void set_has_lock_steer_speed(ControlConf* msg) {
-    msg->_has_bits_[1] |= 0x00000001u;
+  static void set_has_max_localization_miss_num(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x01000000u;
   }
-  static void set_has_enable_navigation_mode_error_filter(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00000400u;
+  static void set_has_max_chassis_miss_num(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x02000000u;
   }
-  static void set_has_enable_navigation_mode_position_update(ControlConf* msg) {
+  static void set_has_max_planning_miss_num(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x10000000u;
+  }
+  static void set_has_max_acceleration_when_stopped(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x04000000u;
+  }
+  static void set_has_steer_angle_rate(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x08000000u;
+  }
+  static void set_has_enable_gain_scheduler(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x20000000u;
+  }
+  static void set_has_set_steer_limit(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x40000000u;
   }
-  static void set_has_enable_persistent_estop(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x80000000u;
+  static void set_has_enable_slope_offset(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000400u;
   }
-  static void set_has_control_period(ControlConf* msg) {
+  static void set_has_lock_steer_speed(ControlConf* msg) {
     msg->_has_bits_[1] |= 0x00000002u;
   }
-  static void set_has_max_planning_interval_sec(ControlConf* msg) {
-    msg->_has_bits_[1] |= 0x00000004u;
-  }
-  static void set_has_max_planning_delay_threshold(ControlConf* msg) {
-    msg->_has_bits_[1] |= 0x00000008u;
-  }
-  static void set_has_driving_mode(ControlConf* msg) {
+  static void set_has_enable_navigation_mode_error_filter(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00000800u;
   }
-  static void set_has_action(ControlConf* msg) {
+  static void set_has_enable_navigation_mode_position_update(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x80000000u;
+  }
+  static void set_has_enable_persistent_estop(ControlConf* msg) {
+    msg->_has_bits_[1] |= 0x00000001u;
+  }
+  static void set_has_control_period(ControlConf* msg) {
+    msg->_has_bits_[1] |= 0x00000004u;
+  }
+  static void set_has_max_planning_interval_sec(ControlConf* msg) {
+    msg->_has_bits_[1] |= 0x00000008u;
+  }
+  static void set_has_max_planning_delay_threshold(ControlConf* msg) {
+    msg->_has_bits_[1] |= 0x00000010u;
+  }
+  static void set_has_driving_mode(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00001000u;
   }
-  static void set_has_soft_estop_brake(ControlConf* msg) {
+  static void set_has_action(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00002000u;
   }
+  static void set_has_soft_estop_brake(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00004000u;
+  }
   static void set_has_max_steering_percentage_allowed(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00200000u;
+    msg->_has_bits_[0] |= 0x00400000u;
   }
   static void set_has_max_status_interval_sec(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00004000u;
+    msg->_has_bits_[0] |= 0x00008000u;
   }
   static const ::controller::LatControllerConf& lat_controller_conf(const ControlConf* msg);
   static void set_has_lat_controller_conf(ControlConf* msg) {
@@ -359,33 +369,37 @@ class ControlConf::HasBitSetters {
     msg->_has_bits_[0] |= 0x00000002u;
   }
   static void set_has_trajectory_period(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00008000u;
-  }
-  static void set_has_chassis_period(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00010000u;
   }
-  static void set_has_localization_period(ControlConf* msg) {
+  static void set_has_chassis_period(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00020000u;
   }
-  static void set_has_minimum_speed_resolution(ControlConf* msg) {
+  static void set_has_localization_period(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00040000u;
+  }
+  static void set_has_minimum_speed_resolution(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00080000u;
   }
   static const ::controller::MPCControllerConf& mpc_controller_conf(const ControlConf* msg);
   static void set_has_mpc_controller_conf(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
   static void set_has_query_relative_time(ControlConf* msg) {
-    msg->_has_bits_[0] |= 0x00080000u;
-  }
-  static void set_has_minimum_speed_protection(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00100000u;
   }
+  static void set_has_minimum_speed_protection(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00200000u;
+  }
   static void set_has_max_path_remain_when_stopped(ControlConf* msg) {
-    msg->_has_bits_[1] |= 0x00000010u;
+    msg->_has_bits_[1] |= 0x00000020u;
   }
   static const ::controller::SimplePIDLatLonControllerConf& simple_pid_lat_lon_controller_conf(const ControlConf* msg);
   static void set_has_simple_pid_lat_lon_controller_conf(ControlConf* msg) {
     msg->_has_bits_[0] |= 0x00000008u;
+  }
+  static const ::controller::StanleyControllerConf& stanley_controller_conf(const ControlConf* msg);
+  static void set_has_stanley_controller_conf(ControlConf* msg) {
+    msg->_has_bits_[0] |= 0x00000010u;
   }
 };
 
@@ -405,6 +419,10 @@ const ::controller::SimplePIDLatLonControllerConf&
 ControlConf::HasBitSetters::simple_pid_lat_lon_controller_conf(const ControlConf* msg) {
   return *msg->simple_pid_lat_lon_controller_conf_;
 }
+const ::controller::StanleyControllerConf&
+ControlConf::HasBitSetters::stanley_controller_conf(const ControlConf* msg) {
+  return *msg->stanley_controller_conf_;
+}
 void ControlConf::clear_lat_controller_conf() {
   if (lat_controller_conf_ != nullptr) lat_controller_conf_->Clear();
   _has_bits_[0] &= ~0x00000001u;
@@ -420,6 +438,10 @@ void ControlConf::clear_mpc_controller_conf() {
 void ControlConf::clear_simple_pid_lat_lon_controller_conf() {
   if (simple_pid_lat_lon_controller_conf_ != nullptr) simple_pid_lat_lon_controller_conf_->Clear();
   _has_bits_[0] &= ~0x00000008u;
+}
+void ControlConf::clear_stanley_controller_conf() {
+  if (stanley_controller_conf_ != nullptr) stanley_controller_conf_->Clear();
+  _has_bits_[0] &= ~0x00000010u;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ControlConf::kControlTestDurationFieldNumber;
@@ -460,6 +482,7 @@ const int ControlConf::kQueryRelativeTimeFieldNumber;
 const int ControlConf::kMinimumSpeedProtectionFieldNumber;
 const int ControlConf::kMaxPathRemainWhenStoppedFieldNumber;
 const int ControlConf::kSimplePidLatLonControllerConfFieldNumber;
+const int ControlConf::kStanleyControllerConfFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ControlConf::ControlConf()
@@ -492,6 +515,11 @@ ControlConf::ControlConf(const ControlConf& from)
     simple_pid_lat_lon_controller_conf_ = new ::controller::SimplePIDLatLonControllerConf(*from.simple_pid_lat_lon_controller_conf_);
   } else {
     simple_pid_lat_lon_controller_conf_ = nullptr;
+  }
+  if (from.has_stanley_controller_conf()) {
+    stanley_controller_conf_ = new ::controller::StanleyControllerConf(*from.stanley_controller_conf_);
+  } else {
+    stanley_controller_conf_ = nullptr;
   }
   ::memcpy(&enable_csv_debug_, &from.enable_csv_debug_,
     static_cast<size_t>(reinterpret_cast<char*>(&max_path_remain_when_stopped_) -
@@ -532,6 +560,7 @@ void ControlConf::SharedDtor() {
   if (this != internal_default_instance()) delete lon_controller_conf_;
   if (this != internal_default_instance()) delete mpc_controller_conf_;
   if (this != internal_default_instance()) delete simple_pid_lat_lon_controller_conf_;
+  if (this != internal_default_instance()) delete stanley_controller_conf_;
 }
 
 void ControlConf::SetCachedSize(int size) const {
@@ -551,7 +580,7 @@ void ControlConf::Clear() {
 
   active_controllers_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       GOOGLE_DCHECK(lat_controller_conf_ != nullptr);
       lat_controller_conf_->Clear();
@@ -568,25 +597,29 @@ void ControlConf::Clear() {
       GOOGLE_DCHECK(simple_pid_lat_lon_controller_conf_ != nullptr);
       simple_pid_lat_lon_controller_conf_->Clear();
     }
+    if (cached_has_bits & 0x00000010u) {
+      GOOGLE_DCHECK(stanley_controller_conf_ != nullptr);
+      stanley_controller_conf_->Clear();
+    }
   }
-  if (cached_has_bits & 0x000000f0u) {
+  if (cached_has_bits & 0x000000e0u) {
     ::memset(&enable_csv_debug_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&use_preview_speed_for_table_) -
-        reinterpret_cast<char*>(&enable_csv_debug_)) + sizeof(use_preview_speed_for_table_));
+        reinterpret_cast<char*>(&is_control_test_mode_) -
+        reinterpret_cast<char*>(&enable_csv_debug_)) + sizeof(is_control_test_mode_));
   }
   if (cached_has_bits & 0x0000ff00u) {
-    ::memset(&enable_input_timestamp_check_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&trajectory_period_) -
-        reinterpret_cast<char*>(&enable_input_timestamp_check_)) + sizeof(trajectory_period_));
+    ::memset(&use_preview_speed_for_table_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&max_status_interval_sec_) -
+        reinterpret_cast<char*>(&use_preview_speed_for_table_)) + sizeof(max_status_interval_sec_));
   }
   if (cached_has_bits & 0x00ff0000u) {
-    ::memset(&chassis_period_, 0, static_cast<size_t>(
+    ::memset(&trajectory_period_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&max_steering_percentage_allowed_) -
-        reinterpret_cast<char*>(&chassis_period_)) + sizeof(max_steering_percentage_allowed_));
+        reinterpret_cast<char*>(&trajectory_period_)) + sizeof(max_steering_percentage_allowed_));
     control_test_duration_ = -1;
-    max_localization_miss_num_ = 20;
   }
   if (cached_has_bits & 0xff000000u) {
+    max_localization_miss_num_ = 20;
     max_chassis_miss_num_ = 20;
     max_acceleration_when_stopped_ = 0.01;
     steer_angle_rate_ = 100;
@@ -594,10 +627,10 @@ void ControlConf::Clear() {
     enable_gain_scheduler_ = true;
     set_steer_limit_ = true;
     enable_navigation_mode_position_update_ = true;
-    enable_persistent_estop_ = true;
   }
   cached_has_bits = _has_bits_[1];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
+    enable_persistent_estop_ = true;
     lock_steer_speed_ = 0.081;
     control_period_ = 0.01;
     max_planning_interval_sec_ = 0.2;
@@ -934,6 +967,19 @@ const char* ControlConf::_InternalParse(const char* begin, const char* end, void
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         parser_till_end = ::controller::SimplePIDLatLonControllerConf::_InternalParse;
         object = msg->mutable_simple_pid_lat_lon_controller_conf();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      // optional .controller.StanleyControllerConf stanley_controller_conf = 39;
+      case 39: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 58) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::controller::StanleyControllerConf::_InternalParse;
+        object = msg->mutable_stanley_controller_conf();
         if (size > end - ptr) goto len_delim_till_end;
         ptr += size;
         GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
@@ -1481,6 +1527,17 @@ bool ControlConf::MergePartialFromCodedStream(
         break;
       }
 
+      // optional .controller.StanleyControllerConf stanley_controller_conf = 39;
+      case 39: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (314 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_stanley_controller_conf()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -1510,128 +1567,128 @@ void ControlConf::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional double control_test_duration = 1 [default = -1];
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00800000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->control_test_duration(), output);
   }
 
   // optional bool enable_csv_debug = 2 [default = false];
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->enable_csv_debug(), output);
   }
 
   // optional bool enable_speed_station_preview = 3 [default = false];
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->enable_speed_station_preview(), output);
   }
 
   // optional bool is_control_test_mode = 4 [default = false];
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->is_control_test_mode(), output);
   }
 
   // optional bool use_preview_speed_for_table = 5 [default = false];
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->use_preview_speed_for_table(), output);
   }
 
   // optional bool enable_input_timestamp_check = 6 [default = false];
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->enable_input_timestamp_check(), output);
   }
 
   // optional int32 max_localization_miss_num = 7 [default = 20];
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x01000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->max_localization_miss_num(), output);
   }
 
   // optional int32 max_chassis_miss_num = 8 [default = 20];
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x02000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->max_chassis_miss_num(), output);
   }
 
   // optional int32 max_planning_miss_num = 9 [default = 20];
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x10000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->max_planning_miss_num(), output);
   }
 
   // optional double max_acceleration_when_stopped = 10 [default = 0.01];
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x04000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(10, this->max_acceleration_when_stopped(), output);
   }
 
   // optional double steer_angle_rate = 11 [default = 100];
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x08000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(11, this->steer_angle_rate(), output);
   }
 
   // optional bool enable_gain_scheduler = 12 [default = true];
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x20000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(12, this->enable_gain_scheduler(), output);
   }
 
   // optional bool set_steer_limit = 13 [default = true];
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x40000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(13, this->set_steer_limit(), output);
   }
 
   // optional bool enable_slope_offset = 14 [default = false];
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000400u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(14, this->enable_slope_offset(), output);
   }
 
   cached_has_bits = _has_bits_[1];
   // optional double lock_steer_speed = 15 [default = 0.081];
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(15, this->lock_steer_speed(), output);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional bool enable_navigation_mode_error_filter = 16 [default = false];
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000800u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(16, this->enable_navigation_mode_error_filter(), output);
   }
 
   // optional bool enable_navigation_mode_position_update = 17 [default = true];
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x80000000u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(17, this->enable_navigation_mode_position_update(), output);
   }
 
+  cached_has_bits = _has_bits_[1];
   // optional bool enable_persistent_estop = 18 [default = true];
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(18, this->enable_persistent_estop(), output);
   }
 
-  cached_has_bits = _has_bits_[1];
   // optional double control_period = 19 [default = 0.01];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(19, this->control_period(), output);
   }
 
   // optional double max_planning_interval_sec = 20 [default = 0.2];
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(20, this->max_planning_interval_sec(), output);
   }
 
   // optional double max_planning_delay_threshold = 21 [default = 4];
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(21, this->max_planning_delay_threshold(), output);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional .canbus.Chassis.DrivingMode driving_mode = 22;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00001000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       22, this->driving_mode(), output);
   }
 
   // optional .controller.DrivingAction action = 23;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00002000u) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       23, this->action(), output);
   }
 
   // optional double soft_estop_brake = 24;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00004000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(24, this->soft_estop_brake(), output);
   }
 
@@ -1642,12 +1699,12 @@ void ControlConf::SerializeWithCachedSizes(
   }
 
   // optional int32 max_steering_percentage_allowed = 26;
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00400000u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(26, this->max_steering_percentage_allowed(), output);
   }
 
   // optional double max_status_interval_sec = 27;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00008000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(27, this->max_status_interval_sec(), output);
   }
 
@@ -1664,22 +1721,22 @@ void ControlConf::SerializeWithCachedSizes(
   }
 
   // optional double trajectory_period = 30;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00010000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(30, this->trajectory_period(), output);
   }
 
   // optional double chassis_period = 31;
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00020000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(31, this->chassis_period(), output);
   }
 
   // optional double localization_period = 32;
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00040000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(32, this->localization_period(), output);
   }
 
   // optional double minimum_speed_resolution = 33;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00080000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(33, this->minimum_speed_resolution(), output);
   }
 
@@ -1690,18 +1747,18 @@ void ControlConf::SerializeWithCachedSizes(
   }
 
   // optional double query_relative_time = 35;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00100000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(35, this->query_relative_time(), output);
   }
 
   // optional double minimum_speed_protection = 36;
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00200000u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(36, this->minimum_speed_protection(), output);
   }
 
   cached_has_bits = _has_bits_[1];
   // optional double max_path_remain_when_stopped = 37 [default = 0.3];
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(37, this->max_path_remain_when_stopped(), output);
   }
 
@@ -1710,6 +1767,12 @@ void ControlConf::SerializeWithCachedSizes(
   if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       38, HasBitSetters::simple_pid_lat_lon_controller_conf(this), output);
+  }
+
+  // optional .controller.StanleyControllerConf stanley_controller_conf = 39;
+  if (cached_has_bits & 0x00000010u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      39, HasBitSetters::stanley_controller_conf(this), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1727,128 +1790,128 @@ void ControlConf::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional double control_test_duration = 1 [default = -1];
-  if (cached_has_bits & 0x00400000u) {
+  if (cached_has_bits & 0x00800000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->control_test_duration(), target);
   }
 
   // optional bool enable_csv_debug = 2 [default = false];
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->enable_csv_debug(), target);
   }
 
   // optional bool enable_speed_station_preview = 3 [default = false];
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->enable_speed_station_preview(), target);
   }
 
   // optional bool is_control_test_mode = 4 [default = false];
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->is_control_test_mode(), target);
   }
 
   // optional bool use_preview_speed_for_table = 5 [default = false];
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->use_preview_speed_for_table(), target);
   }
 
   // optional bool enable_input_timestamp_check = 6 [default = false];
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->enable_input_timestamp_check(), target);
   }
 
   // optional int32 max_localization_miss_num = 7 [default = 20];
-  if (cached_has_bits & 0x00800000u) {
+  if (cached_has_bits & 0x01000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->max_localization_miss_num(), target);
   }
 
   // optional int32 max_chassis_miss_num = 8 [default = 20];
-  if (cached_has_bits & 0x01000000u) {
+  if (cached_has_bits & 0x02000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->max_chassis_miss_num(), target);
   }
 
   // optional int32 max_planning_miss_num = 9 [default = 20];
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x10000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->max_planning_miss_num(), target);
   }
 
   // optional double max_acceleration_when_stopped = 10 [default = 0.01];
-  if (cached_has_bits & 0x02000000u) {
+  if (cached_has_bits & 0x04000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(10, this->max_acceleration_when_stopped(), target);
   }
 
   // optional double steer_angle_rate = 11 [default = 100];
-  if (cached_has_bits & 0x04000000u) {
+  if (cached_has_bits & 0x08000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(11, this->steer_angle_rate(), target);
   }
 
   // optional bool enable_gain_scheduler = 12 [default = true];
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x20000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(12, this->enable_gain_scheduler(), target);
   }
 
   // optional bool set_steer_limit = 13 [default = true];
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x40000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(13, this->set_steer_limit(), target);
   }
 
   // optional bool enable_slope_offset = 14 [default = false];
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000400u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(14, this->enable_slope_offset(), target);
   }
 
   cached_has_bits = _has_bits_[1];
   // optional double lock_steer_speed = 15 [default = 0.081];
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(15, this->lock_steer_speed(), target);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional bool enable_navigation_mode_error_filter = 16 [default = false];
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000800u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(16, this->enable_navigation_mode_error_filter(), target);
   }
 
   // optional bool enable_navigation_mode_position_update = 17 [default = true];
-  if (cached_has_bits & 0x40000000u) {
+  if (cached_has_bits & 0x80000000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(17, this->enable_navigation_mode_position_update(), target);
   }
 
+  cached_has_bits = _has_bits_[1];
   // optional bool enable_persistent_estop = 18 [default = true];
-  if (cached_has_bits & 0x80000000u) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(18, this->enable_persistent_estop(), target);
   }
 
-  cached_has_bits = _has_bits_[1];
   // optional double control_period = 19 [default = 0.01];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(19, this->control_period(), target);
   }
 
   // optional double max_planning_interval_sec = 20 [default = 0.2];
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(20, this->max_planning_interval_sec(), target);
   }
 
   // optional double max_planning_delay_threshold = 21 [default = 4];
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(21, this->max_planning_delay_threshold(), target);
   }
 
   cached_has_bits = _has_bits_[0];
   // optional .canbus.Chassis.DrivingMode driving_mode = 22;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00001000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       22, this->driving_mode(), target);
   }
 
   // optional .controller.DrivingAction action = 23;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00002000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       23, this->action(), target);
   }
 
   // optional double soft_estop_brake = 24;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(24, this->soft_estop_brake(), target);
   }
 
@@ -1857,12 +1920,12 @@ void ControlConf::SerializeWithCachedSizes(
     25, this->active_controllers_, target);
 
   // optional int32 max_steering_percentage_allowed = 26;
-  if (cached_has_bits & 0x00200000u) {
+  if (cached_has_bits & 0x00400000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(26, this->max_steering_percentage_allowed(), target);
   }
 
   // optional double max_status_interval_sec = 27;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(27, this->max_status_interval_sec(), target);
   }
 
@@ -1881,22 +1944,22 @@ void ControlConf::SerializeWithCachedSizes(
   }
 
   // optional double trajectory_period = 30;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(30, this->trajectory_period(), target);
   }
 
   // optional double chassis_period = 31;
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(31, this->chassis_period(), target);
   }
 
   // optional double localization_period = 32;
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(32, this->localization_period(), target);
   }
 
   // optional double minimum_speed_resolution = 33;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(33, this->minimum_speed_resolution(), target);
   }
 
@@ -1908,18 +1971,18 @@ void ControlConf::SerializeWithCachedSizes(
   }
 
   // optional double query_relative_time = 35;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00100000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(35, this->query_relative_time(), target);
   }
 
   // optional double minimum_speed_protection = 36;
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00200000u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(36, this->minimum_speed_protection(), target);
   }
 
   cached_has_bits = _has_bits_[1];
   // optional double max_path_remain_when_stopped = 37 [default = 0.3];
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(37, this->max_path_remain_when_stopped(), target);
   }
 
@@ -1929,6 +1992,13 @@ void ControlConf::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         38, HasBitSetters::simple_pid_lat_lon_controller_conf(this), target);
+  }
+
+  // optional .controller.StanleyControllerConf stanley_controller_conf = 39;
+  if (cached_has_bits & 0x00000010u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        39, HasBitSetters::stanley_controller_conf(this), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1992,187 +2062,194 @@ size_t ControlConf::ByteSizeLong() const {
           *simple_pid_lat_lon_controller_conf_);
     }
 
-    // optional bool enable_csv_debug = 2 [default = false];
+    // optional .controller.StanleyControllerConf stanley_controller_conf = 39;
     if (cached_has_bits & 0x00000010u) {
-      total_size += 1 + 1;
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *stanley_controller_conf_);
     }
 
-    // optional bool enable_speed_station_preview = 3 [default = false];
+    // optional bool enable_csv_debug = 2 [default = false];
     if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 1;
     }
 
-    // optional bool is_control_test_mode = 4 [default = false];
+    // optional bool enable_speed_station_preview = 3 [default = false];
     if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 1;
     }
 
-    // optional bool use_preview_speed_for_table = 5 [default = false];
+    // optional bool is_control_test_mode = 4 [default = false];
     if (cached_has_bits & 0x00000080u) {
       total_size += 1 + 1;
     }
 
   }
   if (cached_has_bits & 0x0000ff00u) {
-    // optional bool enable_input_timestamp_check = 6 [default = false];
+    // optional bool use_preview_speed_for_table = 5 [default = false];
     if (cached_has_bits & 0x00000100u) {
       total_size += 1 + 1;
     }
 
-    // optional bool enable_slope_offset = 14 [default = false];
+    // optional bool enable_input_timestamp_check = 6 [default = false];
     if (cached_has_bits & 0x00000200u) {
       total_size += 1 + 1;
     }
 
-    // optional bool enable_navigation_mode_error_filter = 16 [default = false];
+    // optional bool enable_slope_offset = 14 [default = false];
     if (cached_has_bits & 0x00000400u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool enable_navigation_mode_error_filter = 16 [default = false];
+    if (cached_has_bits & 0x00000800u) {
       total_size += 2 + 1;
     }
 
     // optional .canbus.Chassis.DrivingMode driving_mode = 22;
-    if (cached_has_bits & 0x00000800u) {
+    if (cached_has_bits & 0x00001000u) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->driving_mode());
     }
 
     // optional .controller.DrivingAction action = 23;
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00002000u) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->action());
     }
 
     // optional double soft_estop_brake = 24;
-    if (cached_has_bits & 0x00002000u) {
-      total_size += 2 + 8;
-    }
-
-    // optional double max_status_interval_sec = 27;
     if (cached_has_bits & 0x00004000u) {
       total_size += 2 + 8;
     }
 
-    // optional double trajectory_period = 30;
+    // optional double max_status_interval_sec = 27;
     if (cached_has_bits & 0x00008000u) {
       total_size += 2 + 8;
     }
 
   }
   if (cached_has_bits & 0x00ff0000u) {
-    // optional double chassis_period = 31;
+    // optional double trajectory_period = 30;
     if (cached_has_bits & 0x00010000u) {
       total_size += 2 + 8;
     }
 
-    // optional double localization_period = 32;
+    // optional double chassis_period = 31;
     if (cached_has_bits & 0x00020000u) {
       total_size += 2 + 8;
     }
 
-    // optional double minimum_speed_resolution = 33;
+    // optional double localization_period = 32;
     if (cached_has_bits & 0x00040000u) {
       total_size += 2 + 8;
     }
 
-    // optional double query_relative_time = 35;
+    // optional double minimum_speed_resolution = 33;
     if (cached_has_bits & 0x00080000u) {
       total_size += 2 + 8;
     }
 
-    // optional double minimum_speed_protection = 36;
+    // optional double query_relative_time = 35;
     if (cached_has_bits & 0x00100000u) {
       total_size += 2 + 8;
     }
 
-    // optional int32 max_steering_percentage_allowed = 26;
+    // optional double minimum_speed_protection = 36;
     if (cached_has_bits & 0x00200000u) {
+      total_size += 2 + 8;
+    }
+
+    // optional int32 max_steering_percentage_allowed = 26;
+    if (cached_has_bits & 0x00400000u) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->max_steering_percentage_allowed());
     }
 
     // optional double control_test_duration = 1 [default = -1];
-    if (cached_has_bits & 0x00400000u) {
+    if (cached_has_bits & 0x00800000u) {
       total_size += 1 + 8;
     }
 
+  }
+  if (cached_has_bits & 0xff000000u) {
     // optional int32 max_localization_miss_num = 7 [default = 20];
-    if (cached_has_bits & 0x00800000u) {
+    if (cached_has_bits & 0x01000000u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->max_localization_miss_num());
     }
 
-  }
-  if (cached_has_bits & 0xff000000u) {
     // optional int32 max_chassis_miss_num = 8 [default = 20];
-    if (cached_has_bits & 0x01000000u) {
+    if (cached_has_bits & 0x02000000u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->max_chassis_miss_num());
     }
 
     // optional double max_acceleration_when_stopped = 10 [default = 0.01];
-    if (cached_has_bits & 0x02000000u) {
-      total_size += 1 + 8;
-    }
-
-    // optional double steer_angle_rate = 11 [default = 100];
     if (cached_has_bits & 0x04000000u) {
       total_size += 1 + 8;
     }
 
-    // optional int32 max_planning_miss_num = 9 [default = 20];
+    // optional double steer_angle_rate = 11 [default = 100];
     if (cached_has_bits & 0x08000000u) {
+      total_size += 1 + 8;
+    }
+
+    // optional int32 max_planning_miss_num = 9 [default = 20];
+    if (cached_has_bits & 0x10000000u) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->max_planning_miss_num());
     }
 
     // optional bool enable_gain_scheduler = 12 [default = true];
-    if (cached_has_bits & 0x10000000u) {
-      total_size += 1 + 1;
-    }
-
-    // optional bool set_steer_limit = 13 [default = true];
     if (cached_has_bits & 0x20000000u) {
       total_size += 1 + 1;
     }
 
-    // optional bool enable_navigation_mode_position_update = 17 [default = true];
+    // optional bool set_steer_limit = 13 [default = true];
     if (cached_has_bits & 0x40000000u) {
-      total_size += 2 + 1;
+      total_size += 1 + 1;
     }
 
-    // optional bool enable_persistent_estop = 18 [default = true];
+    // optional bool enable_navigation_mode_position_update = 17 [default = true];
     if (cached_has_bits & 0x80000000u) {
       total_size += 2 + 1;
     }
 
   }
   cached_has_bits = _has_bits_[1];
-  if (cached_has_bits & 0x0000001fu) {
-    // optional double lock_steer_speed = 15 [default = 0.081];
+  if (cached_has_bits & 0x0000003fu) {
+    // optional bool enable_persistent_estop = 18 [default = true];
     if (cached_has_bits & 0x00000001u) {
+      total_size += 2 + 1;
+    }
+
+    // optional double lock_steer_speed = 15 [default = 0.081];
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 8;
     }
 
     // optional double control_period = 19 [default = 0.01];
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 2 + 8;
-    }
-
-    // optional double max_planning_interval_sec = 20 [default = 0.2];
     if (cached_has_bits & 0x00000004u) {
       total_size += 2 + 8;
     }
 
-    // optional double max_planning_delay_threshold = 21 [default = 4];
+    // optional double max_planning_interval_sec = 20 [default = 0.2];
     if (cached_has_bits & 0x00000008u) {
       total_size += 2 + 8;
     }
 
-    // optional double max_path_remain_when_stopped = 37 [default = 0.3];
+    // optional double max_planning_delay_threshold = 21 [default = 4];
     if (cached_has_bits & 0x00000010u) {
+      total_size += 2 + 8;
+    }
+
+    // optional double max_path_remain_when_stopped = 37 [default = 0.3];
+    if (cached_has_bits & 0x00000020u) {
       total_size += 2 + 8;
     }
 
@@ -2220,115 +2297,118 @@ void ControlConf::MergeFrom(const ControlConf& from) {
       mutable_simple_pid_lat_lon_controller_conf()->::controller::SimplePIDLatLonControllerConf::MergeFrom(from.simple_pid_lat_lon_controller_conf());
     }
     if (cached_has_bits & 0x00000010u) {
-      enable_csv_debug_ = from.enable_csv_debug_;
+      mutable_stanley_controller_conf()->::controller::StanleyControllerConf::MergeFrom(from.stanley_controller_conf());
     }
     if (cached_has_bits & 0x00000020u) {
-      enable_speed_station_preview_ = from.enable_speed_station_preview_;
+      enable_csv_debug_ = from.enable_csv_debug_;
     }
     if (cached_has_bits & 0x00000040u) {
-      is_control_test_mode_ = from.is_control_test_mode_;
+      enable_speed_station_preview_ = from.enable_speed_station_preview_;
     }
     if (cached_has_bits & 0x00000080u) {
-      use_preview_speed_for_table_ = from.use_preview_speed_for_table_;
+      is_control_test_mode_ = from.is_control_test_mode_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x0000ff00u) {
     if (cached_has_bits & 0x00000100u) {
-      enable_input_timestamp_check_ = from.enable_input_timestamp_check_;
+      use_preview_speed_for_table_ = from.use_preview_speed_for_table_;
     }
     if (cached_has_bits & 0x00000200u) {
-      enable_slope_offset_ = from.enable_slope_offset_;
+      enable_input_timestamp_check_ = from.enable_input_timestamp_check_;
     }
     if (cached_has_bits & 0x00000400u) {
-      enable_navigation_mode_error_filter_ = from.enable_navigation_mode_error_filter_;
+      enable_slope_offset_ = from.enable_slope_offset_;
     }
     if (cached_has_bits & 0x00000800u) {
-      driving_mode_ = from.driving_mode_;
+      enable_navigation_mode_error_filter_ = from.enable_navigation_mode_error_filter_;
     }
     if (cached_has_bits & 0x00001000u) {
-      action_ = from.action_;
+      driving_mode_ = from.driving_mode_;
     }
     if (cached_has_bits & 0x00002000u) {
-      soft_estop_brake_ = from.soft_estop_brake_;
+      action_ = from.action_;
     }
     if (cached_has_bits & 0x00004000u) {
-      max_status_interval_sec_ = from.max_status_interval_sec_;
+      soft_estop_brake_ = from.soft_estop_brake_;
     }
     if (cached_has_bits & 0x00008000u) {
-      trajectory_period_ = from.trajectory_period_;
+      max_status_interval_sec_ = from.max_status_interval_sec_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x00ff0000u) {
     if (cached_has_bits & 0x00010000u) {
-      chassis_period_ = from.chassis_period_;
+      trajectory_period_ = from.trajectory_period_;
     }
     if (cached_has_bits & 0x00020000u) {
-      localization_period_ = from.localization_period_;
+      chassis_period_ = from.chassis_period_;
     }
     if (cached_has_bits & 0x00040000u) {
-      minimum_speed_resolution_ = from.minimum_speed_resolution_;
+      localization_period_ = from.localization_period_;
     }
     if (cached_has_bits & 0x00080000u) {
-      query_relative_time_ = from.query_relative_time_;
+      minimum_speed_resolution_ = from.minimum_speed_resolution_;
     }
     if (cached_has_bits & 0x00100000u) {
-      minimum_speed_protection_ = from.minimum_speed_protection_;
+      query_relative_time_ = from.query_relative_time_;
     }
     if (cached_has_bits & 0x00200000u) {
-      max_steering_percentage_allowed_ = from.max_steering_percentage_allowed_;
+      minimum_speed_protection_ = from.minimum_speed_protection_;
     }
     if (cached_has_bits & 0x00400000u) {
-      control_test_duration_ = from.control_test_duration_;
+      max_steering_percentage_allowed_ = from.max_steering_percentage_allowed_;
     }
     if (cached_has_bits & 0x00800000u) {
-      max_localization_miss_num_ = from.max_localization_miss_num_;
+      control_test_duration_ = from.control_test_duration_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0xff000000u) {
     if (cached_has_bits & 0x01000000u) {
-      max_chassis_miss_num_ = from.max_chassis_miss_num_;
+      max_localization_miss_num_ = from.max_localization_miss_num_;
     }
     if (cached_has_bits & 0x02000000u) {
-      max_acceleration_when_stopped_ = from.max_acceleration_when_stopped_;
+      max_chassis_miss_num_ = from.max_chassis_miss_num_;
     }
     if (cached_has_bits & 0x04000000u) {
-      steer_angle_rate_ = from.steer_angle_rate_;
+      max_acceleration_when_stopped_ = from.max_acceleration_when_stopped_;
     }
     if (cached_has_bits & 0x08000000u) {
-      max_planning_miss_num_ = from.max_planning_miss_num_;
+      steer_angle_rate_ = from.steer_angle_rate_;
     }
     if (cached_has_bits & 0x10000000u) {
-      enable_gain_scheduler_ = from.enable_gain_scheduler_;
+      max_planning_miss_num_ = from.max_planning_miss_num_;
     }
     if (cached_has_bits & 0x20000000u) {
-      set_steer_limit_ = from.set_steer_limit_;
+      enable_gain_scheduler_ = from.enable_gain_scheduler_;
     }
     if (cached_has_bits & 0x40000000u) {
-      enable_navigation_mode_position_update_ = from.enable_navigation_mode_position_update_;
+      set_steer_limit_ = from.set_steer_limit_;
     }
     if (cached_has_bits & 0x80000000u) {
-      enable_persistent_estop_ = from.enable_persistent_estop_;
+      enable_navigation_mode_position_update_ = from.enable_navigation_mode_position_update_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
   cached_has_bits = from._has_bits_[1];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
-      lock_steer_speed_ = from.lock_steer_speed_;
+      enable_persistent_estop_ = from.enable_persistent_estop_;
     }
     if (cached_has_bits & 0x00000002u) {
-      control_period_ = from.control_period_;
+      lock_steer_speed_ = from.lock_steer_speed_;
     }
     if (cached_has_bits & 0x00000004u) {
-      max_planning_interval_sec_ = from.max_planning_interval_sec_;
+      control_period_ = from.control_period_;
     }
     if (cached_has_bits & 0x00000008u) {
-      max_planning_delay_threshold_ = from.max_planning_delay_threshold_;
+      max_planning_interval_sec_ = from.max_planning_interval_sec_;
     }
     if (cached_has_bits & 0x00000010u) {
+      max_planning_delay_threshold_ = from.max_planning_delay_threshold_;
+    }
+    if (cached_has_bits & 0x00000020u) {
       max_path_remain_when_stopped_ = from.max_path_remain_when_stopped_;
     }
     _has_bits_[1] |= cached_has_bits;
@@ -2367,6 +2447,7 @@ void ControlConf::InternalSwap(ControlConf* other) {
   swap(lon_controller_conf_, other->lon_controller_conf_);
   swap(mpc_controller_conf_, other->mpc_controller_conf_);
   swap(simple_pid_lat_lon_controller_conf_, other->simple_pid_lat_lon_controller_conf_);
+  swap(stanley_controller_conf_, other->stanley_controller_conf_);
   swap(enable_csv_debug_, other->enable_csv_debug_);
   swap(enable_speed_station_preview_, other->enable_speed_station_preview_);
   swap(is_control_test_mode_, other->is_control_test_mode_);

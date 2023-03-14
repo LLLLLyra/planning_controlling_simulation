@@ -7,6 +7,7 @@ import "lat_controller_conf.proto";
 import "lon_controller_conf.proto";
 import "mpc_controller_conf.proto";
 import "simple_pid_lat_lon_controller_conf.proto";
+import "stanley_controller_conf.proto";
 
 enum DrivingAction {
   STOP = 0;
@@ -22,29 +23,29 @@ message ControlConf {
   };
 
   // configs from gflags
-  optional double control_test_duration = 1 [default = -1];
-  optional bool enable_csv_debug = 2 [default = false];
-  optional bool enable_speed_station_preview = 3 [default = false];
-  optional bool is_control_test_mode = 4 [default = false];
-  optional bool use_preview_speed_for_table = 5 [default = false];
-  optional bool enable_input_timestamp_check = 6 [default = false];
-  optional int32 max_localization_miss_num = 7 [default = 20];
-  optional int32 max_chassis_miss_num = 8 [default = 20];
-  optional int32 max_planning_miss_num = 9 [default = 20];
-  optional double max_acceleration_when_stopped = 10 [default = 0.01];
-  optional double steer_angle_rate = 11 [default = 100];
-  optional bool enable_gain_scheduler = 12 [default = true];
-  optional bool set_steer_limit = 13 [default = true];
-  optional bool enable_slope_offset = 14 [default = false];
-  optional double lock_steer_speed = 15 [default = 0.081];
-  optional bool enable_navigation_mode_error_filter = 16 [default = false];
-  optional bool enable_navigation_mode_position_update = 17 [default = true];
-  optional bool enable_persistent_estop = 18 [default = true];
+  optional double control_test_duration = 1 [ default = -1 ];
+  optional bool enable_csv_debug = 2 [ default = false ];
+  optional bool enable_speed_station_preview = 3 [ default = false ];
+  optional bool is_control_test_mode = 4 [ default = false ];
+  optional bool use_preview_speed_for_table = 5 [ default = false ];
+  optional bool enable_input_timestamp_check = 6 [ default = false ];
+  optional int32 max_localization_miss_num = 7 [ default = 20 ];
+  optional int32 max_chassis_miss_num = 8 [ default = 20 ];
+  optional int32 max_planning_miss_num = 9 [ default = 20 ];
+  optional double max_acceleration_when_stopped = 10 [ default = 0.01 ];
+  optional double steer_angle_rate = 11 [ default = 100 ];
+  optional bool enable_gain_scheduler = 12 [ default = true ];
+  optional bool set_steer_limit = 13 [ default = true ];
+  optional bool enable_slope_offset = 14 [ default = false ];
+  optional double lock_steer_speed = 15 [ default = 0.081 ];
+  optional bool enable_navigation_mode_error_filter = 16 [ default = false ];
+  optional bool enable_navigation_mode_position_update = 17 [ default = true ];
+  optional bool enable_persistent_estop = 18 [ default = true ];
 
   // original config
-  optional double control_period = 19 [default = 0.01];
-  optional double max_planning_interval_sec = 20 [default = 0.2];
-  optional double max_planning_delay_threshold = 21 [default = 4.0];
+  optional double control_period = 19 [ default = 0.01 ];
+  optional double max_planning_interval_sec = 20 [ default = 0.2 ];
+  optional double max_planning_delay_threshold = 21 [ default = 4.0 ];
   // 0 - manual; 1 - auto_drive; 2 - speed_only; 3 - steer_only
   optional canbus.Chassis.DrivingMode driving_mode = 22;
   // 0: stop, at first should stop, then receive pad msg to start
@@ -68,7 +69,9 @@ message ControlConf {
   optional double query_relative_time = 35;
   optional double minimum_speed_protection = 36;
 
-  optional double max_path_remain_when_stopped = 37 [default = 0.3];
+  optional double max_path_remain_when_stopped = 37 [ default = 0.3 ];
 
-  optional SimplePIDLatLonControllerConf simple_pid_lat_lon_controller_conf = 38;
+  optional SimplePIDLatLonControllerConf simple_pid_lat_lon_controller_conf =
+      38;
+  optional StanleyControllerConf stanley_controller_conf = 39;
 }
