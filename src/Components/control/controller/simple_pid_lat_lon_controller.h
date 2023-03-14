@@ -62,8 +62,6 @@ class SimplePIDLatLonController : public Controller {
 
   void Stop() override;
 
-  bool get_reached() { return reached_; }
-
  private:
   void CloseFile();
 

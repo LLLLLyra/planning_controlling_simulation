@@ -53,9 +53,6 @@ class StanleyController : public Controller {
 
   void Stop() override;
 
-  bool get_reached() { return reached_; }
-  points::TrajectoryPoint get_target_point() { return target_point_; }
-
  private:
   void CloseFile();
 
@@ -74,11 +71,9 @@ class StanleyController : public Controller {
   double k_;
 
   const vehicle::VehicleParam vehicle_param_;
-  points::TrajectoryPoint target_point_;
   points::PathPoint matched_point_;
 
   const controller::ControlConf *control_conf_ = nullptr;
-  bool reached_;
   TrajectoryAnalyzer trajectory_analyzer_;
 
   double s_matched_, s_dot_matched_, d_matched_, d_dot_matched_;
