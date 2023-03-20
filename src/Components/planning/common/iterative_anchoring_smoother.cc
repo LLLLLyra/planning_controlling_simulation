@@ -763,7 +763,7 @@ void IterativeAnchoringSmoother::AdjustPathAndSpeedByGear(
         trajectory_point.mutable_path_point()->set_s(
             -1.0 * trajectory_point.path_point().s());
         trajectory_point.mutable_path_point()->set_kappa(
-            -1.0 * std::fabs(trajectory_point.path_point().kappa()));
+            -1.0 * trajectory_point.path_point().kappa());
         // dkappa stays the same as direction of both kappa and s are reversed
         trajectory_point.set_v(-1.0 * trajectory_point.v());
         trajectory_point.set_a(-1.0 * trajectory_point.a());
