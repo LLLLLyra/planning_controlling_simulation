@@ -125,7 +125,7 @@ bool DiscretePointsMath::ComputePathProfile(
     double kappa =
         (xds * ydds - yds * xdds) /
         (std::sqrt(xds * xds + yds * yds) * (xds * xds + yds * yds) + 1e-6);
-    kappas->push_back(std::fabs(kappa));
+    kappas->push_back(kappa);
   }
 
   // Dkappa calculation
@@ -274,7 +274,7 @@ bool DiscretePointsMath::ComputePathProfile(
     double kappa =
         (xds * ydds - yds * xdds) /
         (std::sqrt(xds * xds + yds * yds) * (xds * xds + yds * yds) + 1e-6);
-    kappas->push_back(std::fabs(kappa));
+    kappas->push_back(kappa);
   }
 
   // Dkappa calculation
