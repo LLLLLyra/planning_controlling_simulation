@@ -103,9 +103,14 @@ void Show::ObstaclePointToShow(
 }
 
 void Show::RealPub() {
-  reference_path_pub_.publish(*reference_path_);
-  trajectory_pub_.publish(*trajectory_);
-  real_time_path_pub_.publish(*real_path_);
-  target_point_pub_.publish(marker_);
-  obstacles_pub_.publish(obstacles_);
+  const auto reference_path = *reference_path;
+  const auto trajectory = *trajectory_;
+  const auto real_path = *real_path_;
+  const auto marker = marker_;
+  const auto obstacles = obstacles_;
+  reference_path_pub_.publish(reference_path);
+  trajectory_pub_.publish(trajectory);
+  real_time_path_pub_.publish(real_path);
+  target_point_pub_.publish(marker);
+  obstacles_pub_.publish(obstacles);
 }
