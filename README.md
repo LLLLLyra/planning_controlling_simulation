@@ -2,6 +2,22 @@
 
 Based on Apollo platform, this repository simulates Planning, and Controlling on Parking and Cruising (on a reference line) scenarios, communicating with `ROS Melodic`. 
 
+# Visualisation
+
+## Parking
+
+![](assets/parking_scenario.gif)
+
+## Cruising
+
+### Lattice Planning
+
+![](assets/cruising_2.gif)
+
+### QP Planning
+
+![](assets/cruising_1.gif)
+
 # Prerequisite
 
 - glog
