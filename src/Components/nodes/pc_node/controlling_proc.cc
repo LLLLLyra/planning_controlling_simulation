@@ -61,7 +61,7 @@ void ControlProc::Controlling(controller::LocalizationEstimate* location,
   cmd_msg.gear = trajectory->gear();
   double speed = std::ceil(cmd.speed() * 3.6);
   cmd_msg.velocity = speed;
-  if (cmd_msg.velocity == 0 && speed != 0.0) {
+  if (cmd_msg.velocity == 0 && cmd.speed() != 0.0) {
     cmd_msg.velocity = speed > 0 ? 1 : -1;
   }
   cmd_msg.steering_angle = cmd.steering_target() / 100.0 *
