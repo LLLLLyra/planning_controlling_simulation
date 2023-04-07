@@ -4,5 +4,5 @@ devel/**
 .vscode
 **/log/**
 **/trajectory/**
-**/.pyc
+**/*.pyc
 .history/**
