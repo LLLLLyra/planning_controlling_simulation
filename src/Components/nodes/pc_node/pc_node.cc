@@ -78,9 +78,9 @@ void PCNode::Process() {
   ros::param::get("parking", parking);
   ros::param::get("lattice", lattice);
   if (parking) {
-    std::shared_ptr<LatLonController> lat_lon_ctr =
-        std::make_shared<LatLonController>();
-    ctr_ = lat_lon_ctr.get();
+    std::shared_ptr<OpenLoopController> openloop_ctr =
+        std::make_shared<OpenLoopController>();
+    ctr_ = openloop_ctr.get();
     CHECK(Controlling::GetProtoFromASCIIFile(FLAGS_controller_config_parking,
                                              &ctr_conf));
 

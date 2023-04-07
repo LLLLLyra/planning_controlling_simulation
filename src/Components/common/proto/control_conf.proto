@@ -8,6 +8,7 @@ import "lon_controller_conf.proto";
 import "mpc_controller_conf.proto";
 import "simple_pid_lat_lon_controller_conf.proto";
 import "stanley_controller_conf.proto";
+import "open_loop_controller_conf.proto";
 
 enum DrivingAction {
   STOP = 0;
@@ -74,4 +75,5 @@ message ControlConf {
   optional SimplePIDLatLonControllerConf simple_pid_lat_lon_controller_conf =
       38;
   optional StanleyControllerConf stanley_controller_conf = 39;
+  optional OpenLoopControllerConf open_loop_controller_conf = 40;
 }

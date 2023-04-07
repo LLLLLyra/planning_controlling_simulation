@@ -38,6 +38,7 @@
 #include "mpc_controller_conf.pb.h"
 #include "simple_pid_lat_lon_controller_conf.pb.h"
 #include "stanley_controller_conf.pb.h"
+#include "open_loop_controller_conf.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_control_5fconf_2eproto
@@ -294,6 +295,15 @@ class ControlConf :
   ::controller::StanleyControllerConf* mutable_stanley_controller_conf();
   void set_allocated_stanley_controller_conf(::controller::StanleyControllerConf* stanley_controller_conf);
 
+  // optional .controller.OpenLoopControllerConf open_loop_controller_conf = 40;
+  bool has_open_loop_controller_conf() const;
+  void clear_open_loop_controller_conf();
+  static const int kOpenLoopControllerConfFieldNumber = 40;
+  const ::controller::OpenLoopControllerConf& open_loop_controller_conf() const;
+  ::controller::OpenLoopControllerConf* release_open_loop_controller_conf();
+  ::controller::OpenLoopControllerConf* mutable_open_loop_controller_conf();
+  void set_allocated_open_loop_controller_conf(::controller::OpenLoopControllerConf* open_loop_controller_conf);
+
   // optional bool enable_csv_debug = 2 [default = false];
   bool has_enable_csv_debug() const;
   void clear_enable_csv_debug();
@@ -538,6 +548,7 @@ class ControlConf :
   ::controller::MPCControllerConf* mpc_controller_conf_;
   ::controller::SimplePIDLatLonControllerConf* simple_pid_lat_lon_controller_conf_;
   ::controller::StanleyControllerConf* stanley_controller_conf_;
+  ::controller::OpenLoopControllerConf* open_loop_controller_conf_;
   bool enable_csv_debug_;
   bool enable_speed_station_preview_;
   bool is_control_test_mode_;
@@ -586,389 +597,389 @@ class ControlConf :
 
 // optional double control_test_duration = 1 [default = -1];
 inline bool ControlConf::has_control_test_duration() const {
-  return (_has_bits_[0] & 0x00800000u) != 0;
+  return (_has_bits_[0] & 0x01000000u) != 0;
 }
 inline void ControlConf::clear_control_test_duration() {
   control_test_duration_ = -1;
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 inline double ControlConf::control_test_duration() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.control_test_duration)
   return control_test_duration_;
 }
 inline void ControlConf::set_control_test_duration(double value) {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x01000000u;
   control_test_duration_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.control_test_duration)
 }
 
 // optional bool enable_csv_debug = 2 [default = false];
 inline bool ControlConf::has_enable_csv_debug() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void ControlConf::clear_enable_csv_debug() {
   enable_csv_debug_ = false;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline bool ControlConf::enable_csv_debug() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_csv_debug)
   return enable_csv_debug_;
 }
 inline void ControlConf::set_enable_csv_debug(bool value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
   enable_csv_debug_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_csv_debug)
 }
 
 // optional bool enable_speed_station_preview = 3 [default = false];
 inline bool ControlConf::has_enable_speed_station_preview() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void ControlConf::clear_enable_speed_station_preview() {
   enable_speed_station_preview_ = false;
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline bool ControlConf::enable_speed_station_preview() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_speed_station_preview)
   return enable_speed_station_preview_;
 }
 inline void ControlConf::set_enable_speed_station_preview(bool value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
   enable_speed_station_preview_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_speed_station_preview)
 }
 
 // optional bool is_control_test_mode = 4 [default = false];
 inline bool ControlConf::has_is_control_test_mode() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void ControlConf::clear_is_control_test_mode() {
   is_control_test_mode_ = false;
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline bool ControlConf::is_control_test_mode() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.is_control_test_mode)
   return is_control_test_mode_;
 }
 inline void ControlConf::set_is_control_test_mode(bool value) {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
   is_control_test_mode_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.is_control_test_mode)
 }
 
 // optional bool use_preview_speed_for_table = 5 [default = false];
 inline bool ControlConf::has_use_preview_speed_for_table() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void ControlConf::clear_use_preview_speed_for_table() {
   use_preview_speed_for_table_ = false;
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline bool ControlConf::use_preview_speed_for_table() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.use_preview_speed_for_table)
   return use_preview_speed_for_table_;
 }
 inline void ControlConf::set_use_preview_speed_for_table(bool value) {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
   use_preview_speed_for_table_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.use_preview_speed_for_table)
 }
 
 // optional bool enable_input_timestamp_check = 6 [default = false];
 inline bool ControlConf::has_enable_input_timestamp_check() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ControlConf::clear_enable_input_timestamp_check() {
   enable_input_timestamp_check_ = false;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline bool ControlConf::enable_input_timestamp_check() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_input_timestamp_check)
   return enable_input_timestamp_check_;
 }
 inline void ControlConf::set_enable_input_timestamp_check(bool value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
   enable_input_timestamp_check_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_input_timestamp_check)
 }
 
 // optional int32 max_localization_miss_num = 7 [default = 20];
 inline bool ControlConf::has_max_localization_miss_num() const {
-  return (_has_bits_[0] & 0x01000000u) != 0;
+  return (_has_bits_[0] & 0x02000000u) != 0;
 }
 inline void ControlConf::clear_max_localization_miss_num() {
   max_localization_miss_num_ = 20;
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x02000000u;
 }
 inline ::google::protobuf::int32 ControlConf::max_localization_miss_num() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_localization_miss_num)
   return max_localization_miss_num_;
 }
 inline void ControlConf::set_max_localization_miss_num(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x02000000u;
   max_localization_miss_num_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_localization_miss_num)
 }
 
 // optional int32 max_chassis_miss_num = 8 [default = 20];
 inline bool ControlConf::has_max_chassis_miss_num() const {
-  return (_has_bits_[0] & 0x02000000u) != 0;
+  return (_has_bits_[0] & 0x04000000u) != 0;
 }
 inline void ControlConf::clear_max_chassis_miss_num() {
   max_chassis_miss_num_ = 20;
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x04000000u;
 }
 inline ::google::protobuf::int32 ControlConf::max_chassis_miss_num() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_chassis_miss_num)
   return max_chassis_miss_num_;
 }
 inline void ControlConf::set_max_chassis_miss_num(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x04000000u;
   max_chassis_miss_num_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_chassis_miss_num)
 }
 
 // optional int32 max_planning_miss_num = 9 [default = 20];
 inline bool ControlConf::has_max_planning_miss_num() const {
-  return (_has_bits_[0] & 0x10000000u) != 0;
+  return (_has_bits_[0] & 0x20000000u) != 0;
 }
 inline void ControlConf::clear_max_planning_miss_num() {
   max_planning_miss_num_ = 20;
-  _has_bits_[0] &= ~0x10000000u;
+  _has_bits_[0] &= ~0x20000000u;
 }
 inline ::google::protobuf::int32 ControlConf::max_planning_miss_num() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_planning_miss_num)
   return max_planning_miss_num_;
 }
 inline void ControlConf::set_max_planning_miss_num(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x10000000u;
+  _has_bits_[0] |= 0x20000000u;
   max_planning_miss_num_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_planning_miss_num)
 }
 
 // optional double max_acceleration_when_stopped = 10 [default = 0.01];
 inline bool ControlConf::has_max_acceleration_when_stopped() const {
-  return (_has_bits_[0] & 0x04000000u) != 0;
+  return (_has_bits_[0] & 0x08000000u) != 0;
 }
 inline void ControlConf::clear_max_acceleration_when_stopped() {
   max_acceleration_when_stopped_ = 0.01;
-  _has_bits_[0] &= ~0x04000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 inline double ControlConf::max_acceleration_when_stopped() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_acceleration_when_stopped)
   return max_acceleration_when_stopped_;
 }
 inline void ControlConf::set_max_acceleration_when_stopped(double value) {
-  _has_bits_[0] |= 0x04000000u;
+  _has_bits_[0] |= 0x08000000u;
   max_acceleration_when_stopped_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_acceleration_when_stopped)
 }
 
 // optional double steer_angle_rate = 11 [default = 100];
 inline bool ControlConf::has_steer_angle_rate() const {
-  return (_has_bits_[0] & 0x08000000u) != 0;
+  return (_has_bits_[0] & 0x10000000u) != 0;
 }
 inline void ControlConf::clear_steer_angle_rate() {
   steer_angle_rate_ = 100;
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline double ControlConf::steer_angle_rate() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.steer_angle_rate)
   return steer_angle_rate_;
 }
 inline void ControlConf::set_steer_angle_rate(double value) {
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x10000000u;
   steer_angle_rate_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.steer_angle_rate)
 }
 
 // optional bool enable_gain_scheduler = 12 [default = true];
 inline bool ControlConf::has_enable_gain_scheduler() const {
-  return (_has_bits_[0] & 0x20000000u) != 0;
+  return (_has_bits_[0] & 0x40000000u) != 0;
 }
 inline void ControlConf::clear_enable_gain_scheduler() {
   enable_gain_scheduler_ = true;
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x40000000u;
 }
 inline bool ControlConf::enable_gain_scheduler() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_gain_scheduler)
   return enable_gain_scheduler_;
 }
 inline void ControlConf::set_enable_gain_scheduler(bool value) {
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x40000000u;
   enable_gain_scheduler_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_gain_scheduler)
 }
 
 // optional bool set_steer_limit = 13 [default = true];
 inline bool ControlConf::has_set_steer_limit() const {
-  return (_has_bits_[0] & 0x40000000u) != 0;
+  return (_has_bits_[0] & 0x80000000u) != 0;
 }
 inline void ControlConf::clear_set_steer_limit() {
   set_steer_limit_ = true;
-  _has_bits_[0] &= ~0x40000000u;
+  _has_bits_[0] &= ~0x80000000u;
 }
 inline bool ControlConf::set_steer_limit() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.set_steer_limit)
   return set_steer_limit_;
 }
 inline void ControlConf::set_set_steer_limit(bool value) {
-  _has_bits_[0] |= 0x40000000u;
+  _has_bits_[0] |= 0x80000000u;
   set_steer_limit_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.set_steer_limit)
 }
 
 // optional bool enable_slope_offset = 14 [default = false];
 inline bool ControlConf::has_enable_slope_offset() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void ControlConf::clear_enable_slope_offset() {
   enable_slope_offset_ = false;
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline bool ControlConf::enable_slope_offset() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_slope_offset)
   return enable_slope_offset_;
 }
 inline void ControlConf::set_enable_slope_offset(bool value) {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
   enable_slope_offset_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_slope_offset)
 }
 
 // optional double lock_steer_speed = 15 [default = 0.081];
 inline bool ControlConf::has_lock_steer_speed() const {
-  return (_has_bits_[1] & 0x00000002u) != 0;
+  return (_has_bits_[1] & 0x00000004u) != 0;
 }
 inline void ControlConf::clear_lock_steer_speed() {
   lock_steer_speed_ = 0.081;
-  _has_bits_[1] &= ~0x00000002u;
+  _has_bits_[1] &= ~0x00000004u;
 }
 inline double ControlConf::lock_steer_speed() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.lock_steer_speed)
   return lock_steer_speed_;
 }
 inline void ControlConf::set_lock_steer_speed(double value) {
-  _has_bits_[1] |= 0x00000002u;
+  _has_bits_[1] |= 0x00000004u;
   lock_steer_speed_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.lock_steer_speed)
 }
 
 // optional bool enable_navigation_mode_error_filter = 16 [default = false];
 inline bool ControlConf::has_enable_navigation_mode_error_filter() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void ControlConf::clear_enable_navigation_mode_error_filter() {
   enable_navigation_mode_error_filter_ = false;
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline bool ControlConf::enable_navigation_mode_error_filter() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_navigation_mode_error_filter)
   return enable_navigation_mode_error_filter_;
 }
 inline void ControlConf::set_enable_navigation_mode_error_filter(bool value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
   enable_navigation_mode_error_filter_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_navigation_mode_error_filter)
 }
 
 // optional bool enable_navigation_mode_position_update = 17 [default = true];
 inline bool ControlConf::has_enable_navigation_mode_position_update() const {
-  return (_has_bits_[0] & 0x80000000u) != 0;
+  return (_has_bits_[1] & 0x00000001u) != 0;
 }
 inline void ControlConf::clear_enable_navigation_mode_position_update() {
   enable_navigation_mode_position_update_ = true;
-  _has_bits_[0] &= ~0x80000000u;
+  _has_bits_[1] &= ~0x00000001u;
 }
 inline bool ControlConf::enable_navigation_mode_position_update() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_navigation_mode_position_update)
   return enable_navigation_mode_position_update_;
 }
 inline void ControlConf::set_enable_navigation_mode_position_update(bool value) {
-  _has_bits_[0] |= 0x80000000u;
+  _has_bits_[1] |= 0x00000001u;
   enable_navigation_mode_position_update_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_navigation_mode_position_update)
 }
 
 // optional bool enable_persistent_estop = 18 [default = true];
 inline bool ControlConf::has_enable_persistent_estop() const {
-  return (_has_bits_[1] & 0x00000001u) != 0;
+  return (_has_bits_[1] & 0x00000002u) != 0;
 }
 inline void ControlConf::clear_enable_persistent_estop() {
   enable_persistent_estop_ = true;
-  _has_bits_[1] &= ~0x00000001u;
+  _has_bits_[1] &= ~0x00000002u;
 }
 inline bool ControlConf::enable_persistent_estop() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.enable_persistent_estop)
   return enable_persistent_estop_;
 }
 inline void ControlConf::set_enable_persistent_estop(bool value) {
-  _has_bits_[1] |= 0x00000001u;
+  _has_bits_[1] |= 0x00000002u;
   enable_persistent_estop_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.enable_persistent_estop)
 }
 
 // optional double control_period = 19 [default = 0.01];
 inline bool ControlConf::has_control_period() const {
-  return (_has_bits_[1] & 0x00000004u) != 0;
+  return (_has_bits_[1] & 0x00000008u) != 0;
 }
 inline void ControlConf::clear_control_period() {
   control_period_ = 0.01;
-  _has_bits_[1] &= ~0x00000004u;
+  _has_bits_[1] &= ~0x00000008u;
 }
 inline double ControlConf::control_period() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.control_period)
   return control_period_;
 }
 inline void ControlConf::set_control_period(double value) {
-  _has_bits_[1] |= 0x00000004u;
+  _has_bits_[1] |= 0x00000008u;
   control_period_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.control_period)
 }
 
 // optional double max_planning_interval_sec = 20 [default = 0.2];
 inline bool ControlConf::has_max_planning_interval_sec() const {
-  return (_has_bits_[1] & 0x00000008u) != 0;
+  return (_has_bits_[1] & 0x00000010u) != 0;
 }
 inline void ControlConf::clear_max_planning_interval_sec() {
   max_planning_interval_sec_ = 0.2;
-  _has_bits_[1] &= ~0x00000008u;
+  _has_bits_[1] &= ~0x00000010u;
 }
 inline double ControlConf::max_planning_interval_sec() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_planning_interval_sec)
   return max_planning_interval_sec_;
 }
 inline void ControlConf::set_max_planning_interval_sec(double value) {
-  _has_bits_[1] |= 0x00000008u;
+  _has_bits_[1] |= 0x00000010u;
   max_planning_interval_sec_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_planning_interval_sec)
 }
 
 // optional double max_planning_delay_threshold = 21 [default = 4];
 inline bool ControlConf::has_max_planning_delay_threshold() const {
-  return (_has_bits_[1] & 0x00000010u) != 0;
+  return (_has_bits_[1] & 0x00000020u) != 0;
 }
 inline void ControlConf::clear_max_planning_delay_threshold() {
   max_planning_delay_threshold_ = 4;
-  _has_bits_[1] &= ~0x00000010u;
+  _has_bits_[1] &= ~0x00000020u;
 }
 inline double ControlConf::max_planning_delay_threshold() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_planning_delay_threshold)
   return max_planning_delay_threshold_;
 }
 inline void ControlConf::set_max_planning_delay_threshold(double value) {
-  _has_bits_[1] |= 0x00000010u;
+  _has_bits_[1] |= 0x00000020u;
   max_planning_delay_threshold_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_planning_delay_threshold)
 }
 
 // optional .canbus.Chassis.DrivingMode driving_mode = 22;
 inline bool ControlConf::has_driving_mode() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void ControlConf::clear_driving_mode() {
   driving_mode_ = 0;
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline ::canbus::Chassis_DrivingMode ControlConf::driving_mode() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.driving_mode)
@@ -976,18 +987,18 @@ inline ::canbus::Chassis_DrivingMode ControlConf::driving_mode() const {
 }
 inline void ControlConf::set_driving_mode(::canbus::Chassis_DrivingMode value) {
   assert(::canbus::Chassis_DrivingMode_IsValid(value));
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00002000u;
   driving_mode_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.driving_mode)
 }
 
 // optional .controller.DrivingAction action = 23;
 inline bool ControlConf::has_action() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void ControlConf::clear_action() {
   action_ = 0;
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline ::controller::DrivingAction ControlConf::action() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.action)
@@ -995,25 +1006,25 @@ inline ::controller::DrivingAction ControlConf::action() const {
 }
 inline void ControlConf::set_action(::controller::DrivingAction value) {
   assert(::controller::DrivingAction_IsValid(value));
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
   action_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.action)
 }
 
 // optional double soft_estop_brake = 24;
 inline bool ControlConf::has_soft_estop_brake() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void ControlConf::clear_soft_estop_brake() {
   soft_estop_brake_ = 0;
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline double ControlConf::soft_estop_brake() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.soft_estop_brake)
   return soft_estop_brake_;
 }
 inline void ControlConf::set_soft_estop_brake(double value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00008000u;
   soft_estop_brake_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.soft_estop_brake)
 }
@@ -1052,36 +1063,36 @@ ControlConf::mutable_active_controllers() {
 
 // optional int32 max_steering_percentage_allowed = 26;
 inline bool ControlConf::has_max_steering_percentage_allowed() const {
-  return (_has_bits_[0] & 0x00400000u) != 0;
+  return (_has_bits_[0] & 0x00800000u) != 0;
 }
 inline void ControlConf::clear_max_steering_percentage_allowed() {
   max_steering_percentage_allowed_ = 0;
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 inline ::google::protobuf::int32 ControlConf::max_steering_percentage_allowed() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_steering_percentage_allowed)
   return max_steering_percentage_allowed_;
 }
 inline void ControlConf::set_max_steering_percentage_allowed(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00800000u;
   max_steering_percentage_allowed_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_steering_percentage_allowed)
 }
 
 // optional double max_status_interval_sec = 27;
 inline bool ControlConf::has_max_status_interval_sec() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void ControlConf::clear_max_status_interval_sec() {
   max_status_interval_sec_ = 0;
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline double ControlConf::max_status_interval_sec() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_status_interval_sec)
   return max_status_interval_sec_;
 }
 inline void ControlConf::set_max_status_interval_sec(double value) {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00010000u;
   max_status_interval_sec_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_status_interval_sec)
 }
@@ -1178,72 +1189,72 @@ inline void ControlConf::set_allocated_lon_controller_conf(::controller::LonCont
 
 // optional double trajectory_period = 30;
 inline bool ControlConf::has_trajectory_period() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void ControlConf::clear_trajectory_period() {
   trajectory_period_ = 0;
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline double ControlConf::trajectory_period() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.trajectory_period)
   return trajectory_period_;
 }
 inline void ControlConf::set_trajectory_period(double value) {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00020000u;
   trajectory_period_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.trajectory_period)
 }
 
 // optional double chassis_period = 31;
 inline bool ControlConf::has_chassis_period() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void ControlConf::clear_chassis_period() {
   chassis_period_ = 0;
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline double ControlConf::chassis_period() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.chassis_period)
   return chassis_period_;
 }
 inline void ControlConf::set_chassis_period(double value) {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00040000u;
   chassis_period_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.chassis_period)
 }
 
 // optional double localization_period = 32;
 inline bool ControlConf::has_localization_period() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void ControlConf::clear_localization_period() {
   localization_period_ = 0;
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline double ControlConf::localization_period() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.localization_period)
   return localization_period_;
 }
 inline void ControlConf::set_localization_period(double value) {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00080000u;
   localization_period_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.localization_period)
 }
 
 // optional double minimum_speed_resolution = 33;
 inline bool ControlConf::has_minimum_speed_resolution() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void ControlConf::clear_minimum_speed_resolution() {
   minimum_speed_resolution_ = 0;
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline double ControlConf::minimum_speed_resolution() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.minimum_speed_resolution)
   return minimum_speed_resolution_;
 }
 inline void ControlConf::set_minimum_speed_resolution(double value) {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00100000u;
   minimum_speed_resolution_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.minimum_speed_resolution)
 }
@@ -1295,54 +1306,54 @@ inline void ControlConf::set_allocated_mpc_controller_conf(::controller::MPCCont
 
 // optional double query_relative_time = 35;
 inline bool ControlConf::has_query_relative_time() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void ControlConf::clear_query_relative_time() {
   query_relative_time_ = 0;
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline double ControlConf::query_relative_time() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.query_relative_time)
   return query_relative_time_;
 }
 inline void ControlConf::set_query_relative_time(double value) {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00200000u;
   query_relative_time_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.query_relative_time)
 }
 
 // optional double minimum_speed_protection = 36;
 inline bool ControlConf::has_minimum_speed_protection() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 inline void ControlConf::clear_minimum_speed_protection() {
   minimum_speed_protection_ = 0;
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline double ControlConf::minimum_speed_protection() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.minimum_speed_protection)
   return minimum_speed_protection_;
 }
 inline void ControlConf::set_minimum_speed_protection(double value) {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00400000u;
   minimum_speed_protection_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.minimum_speed_protection)
 }
 
 // optional double max_path_remain_when_stopped = 37 [default = 0.3];
 inline bool ControlConf::has_max_path_remain_when_stopped() const {
-  return (_has_bits_[1] & 0x00000020u) != 0;
+  return (_has_bits_[1] & 0x00000040u) != 0;
 }
 inline void ControlConf::clear_max_path_remain_when_stopped() {
   max_path_remain_when_stopped_ = 0.3;
-  _has_bits_[1] &= ~0x00000020u;
+  _has_bits_[1] &= ~0x00000040u;
 }
 inline double ControlConf::max_path_remain_when_stopped() const {
   // @@protoc_insertion_point(field_get:controller.ControlConf.max_path_remain_when_stopped)
   return max_path_remain_when_stopped_;
 }
 inline void ControlConf::set_max_path_remain_when_stopped(double value) {
-  _has_bits_[1] |= 0x00000020u;
+  _has_bits_[1] |= 0x00000040u;
   max_path_remain_when_stopped_ = value;
   // @@protoc_insertion_point(field_set:controller.ControlConf.max_path_remain_when_stopped)
 }
@@ -1435,6 +1446,51 @@ inline void ControlConf::set_allocated_stanley_controller_conf(::controller::Sta
   }
   stanley_controller_conf_ = stanley_controller_conf;
   // @@protoc_insertion_point(field_set_allocated:controller.ControlConf.stanley_controller_conf)
+}
+
+// optional .controller.OpenLoopControllerConf open_loop_controller_conf = 40;
+inline bool ControlConf::has_open_loop_controller_conf() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline const ::controller::OpenLoopControllerConf& ControlConf::open_loop_controller_conf() const {
+  const ::controller::OpenLoopControllerConf* p = open_loop_controller_conf_;
+  // @@protoc_insertion_point(field_get:controller.ControlConf.open_loop_controller_conf)
+  return p != nullptr ? *p : *reinterpret_cast<const ::controller::OpenLoopControllerConf*>(
+      &::controller::_OpenLoopControllerConf_default_instance_);
+}
+inline ::controller::OpenLoopControllerConf* ControlConf::release_open_loop_controller_conf() {
+  // @@protoc_insertion_point(field_release:controller.ControlConf.open_loop_controller_conf)
+  _has_bits_[0] &= ~0x00000020u;
+  ::controller::OpenLoopControllerConf* temp = open_loop_controller_conf_;
+  open_loop_controller_conf_ = nullptr;
+  return temp;
+}
+inline ::controller::OpenLoopControllerConf* ControlConf::mutable_open_loop_controller_conf() {
+  _has_bits_[0] |= 0x00000020u;
+  if (open_loop_controller_conf_ == nullptr) {
+    auto* p = CreateMaybeMessage<::controller::OpenLoopControllerConf>(GetArenaNoVirtual());
+    open_loop_controller_conf_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:controller.ControlConf.open_loop_controller_conf)
+  return open_loop_controller_conf_;
+}
+inline void ControlConf::set_allocated_open_loop_controller_conf(::controller::OpenLoopControllerConf* open_loop_controller_conf) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(open_loop_controller_conf_);
+  }
+  if (open_loop_controller_conf) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      open_loop_controller_conf = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, open_loop_controller_conf, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000020u;
+  } else {
+    _has_bits_[0] &= ~0x00000020u;
+  }
+  open_loop_controller_conf_ = open_loop_controller_conf;
+  // @@protoc_insertion_point(field_set_allocated:controller.ControlConf.open_loop_controller_conf)
 }
 
 #ifdef __GNUC__

@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package controller;
+
+message OpenLoopControllerConf {
+  optional double speed_controller_input_limit = 1;
+  optional double k = 2;
+}
