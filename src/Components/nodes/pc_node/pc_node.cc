@@ -52,9 +52,6 @@ void PCNode::localisation_call_back(const nav_msgs::OdometryPtr odometry) {
 }
 
 void PCNode::Run() {
-  std::shared_ptr<LatLonController> lat_lon_ctr =
-      std::make_shared<LatLonController>();
-  ctr_ = lat_lon_ctr.get();
   show_.Init(&n_, &reference_path_, &trajectory_, &real_path_);
   obstacles_map_service_ =
       n_.serviceClient<simulation_msg::ObstacleService>("/get_obstacles");
@@ -81,6 +78,9 @@ void PCNode::Process() {
   ros::param::get("parking", parking);
   ros::param::get("lattice", lattice);
   if (parking) {
+    std::shared_ptr<LatLonController> lat_lon_ctr =
+        std::make_shared<LatLonController>();
+    ctr_ = lat_lon_ctr.get();
     CHECK(Controlling::GetProtoFromASCIIFile(FLAGS_controller_config_parking,
                                              &ctr_conf));
 
@@ -99,6 +99,9 @@ void PCNode::Process() {
     control_proc.ControllerInit(ctr_);
     control_proc.Control(&location_, &chassis_, &trajectory_queue_, injector_);
   } else {
+    std::shared_ptr<SimplePIDLatLonController> pid_ctr =
+        std::make_shared<SimplePIDLatLonController>();
+    ctr_ = pid_ctr.get();
     CHECK(Controlling::GetProtoFromASCIIFile(FLAGS_controller_config_lattice,
                                              &ctr_conf));
     planning::ADCTrajectory &trajectory = trajectory_queue_.emplace();

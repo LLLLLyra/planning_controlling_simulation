@@ -5,6 +5,7 @@
 #include "common/proto/chassis.pb.h"
 #include "common/proto/localization.pb.h"
 #include "control/controller/lat_lon_controller.h"
+#include "control/controller/simple_pid_lat_lon_controller.h"
 #include "controlling_proc.h"
 #include "display.h"
 #include "nav_msgs/Odometry.h"

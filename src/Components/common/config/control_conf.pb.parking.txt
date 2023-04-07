@@ -28,7 +28,7 @@ minimum_speed_resolution: 0.2
 query_relative_time: 0.4
 minimum_speed_protection: 0.1
 simple_pid_lat_lon_controller_conf {
-  look_ahead_distance: 4
+  look_ahead_distance: 2
   d: 0.2
   dt: 0.01
   speed_controller_input_limit: 0.8
