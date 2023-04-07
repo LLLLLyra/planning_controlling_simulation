@@ -103,7 +103,7 @@ void Show::ObstaclePointToShow(
 }
 
 void Show::RealPub() {
-  const auto reference_path = *reference_path;
+  const auto reference_path = *reference_path_;
   const auto trajectory = *trajectory_;
   const auto real_path = *real_path_;
   const auto marker = marker_;
