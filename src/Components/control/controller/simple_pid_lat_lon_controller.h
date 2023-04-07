@@ -87,7 +87,6 @@ class SimplePIDLatLonController : public Controller {
 
   double station_error_ = 0.0;
   double yaw_error_ = 0.0;
-  size_t last_index_ = 0;
   double look_ahead_distance_ = 0.0;
   double speed_controller_input_limit_ = 0.0;
 

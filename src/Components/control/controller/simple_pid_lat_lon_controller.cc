@@ -94,7 +94,6 @@ void SimplePIDLatLonController::InitializeFilters(
 Status SimplePIDLatLonController::Reset() {
   station_pid_controller_.Reset();
   yaw_pid_controller_.Reset();
-  last_index_ = 0;
   s_matched_ = 0;
   return Status::OK();
 }
@@ -201,18 +200,14 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
                           target_point_.path_point().y() - y);
 
   // skip the trajectory before the ramdom start
-  while ((target_index < n) &&
-         (current_distance < look_ahead_distance_ ||
-          target_direction.InnerProd(current_direction) <= 0)) {
+  while ((target_index < n - 1) && (current_distance < look_ahead_distance_)) {
     ++target_index;
-    target_point_ =
-        *(trajectory_.trajectory_point().begin() + (target_index % n));
+    target_point_ = *(trajectory_.trajectory_point().begin() + target_index);
     current_distance =
         GetDistance(matched_point->path_point(), target_point_.path_point());
     current_direction.set_x(target_point_.path_point().x() - x);
     current_direction.set_y(target_point_.path_point().y() - y);
   }
-  last_index_ = target_index;
 
   auto vehicle_state = injector_->vehicle_state();
   auto projection_point = trajectory_analyzer_.QueryMatchedPathPoint(
@@ -223,5 +218,13 @@ points::TrajectoryPoint SimplePIDLatLonController::GetTargetPoint(
       vehicle_state->linear_velocity(), projection_point, &s_matched_,
       &s_dot_matched_, &d_matched_, &d_dot_matched_);
   station_error_ = target_point_.path_point().s() - s_matched_;
+
+  auto goal = trajectory_analyzer_.trajectory_points().back();
+  double dx = goal.path_point().x() - vehicle_state->x();
+  double dy = goal.path_point().y() - vehicle_state->y();
+  bool distance_check = (dx * dx + dy * dy) < 0.0025;
+  bool overtake_check =
+      std::abs(std::abs(s_matched_) - std::abs(goal.path_point().s())) < 1e-2;
+  reached_ = distance_check || overtake_check;
   return target_point_;
 }
