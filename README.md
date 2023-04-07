@@ -99,6 +99,7 @@ There are four ROS nodes in total: `chassis_node`, `pc_node`, `obstacles_service
     - add termination of controllers
     - combine lateral and longitudinal controllers
     - add a pure persuit controller
+    - add a feedforward controller
   
 - Planning
     - add B-spline smoother
@@ -107,4 +108,4 @@ There are four ROS nodes in total: `chassis_node`, `pc_node`, `obstacles_service
 
 - no consideration of re-planning
 - no obstacles for lattice planner
-- lateral controlling oscillation
+- lateral controlling oscillation in LQR controller (possibly caused by latency)
