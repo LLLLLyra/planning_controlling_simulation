@@ -39,6 +39,8 @@ class HybridAStar {
 
  private:
   bool AnalyticExpansion(std::shared_ptr<Node3d> current_node);
+  // smooth Reeds Shepp path with B-spline
+  bool BSplineSmooth(std::shared_ptr<ReedSheppPath> reeds_shepp_to_check);
   // check collision and validity
   bool ValidityCheck(std::shared_ptr<Node3d> node);
   // check Reeds Shepp path collision and validity

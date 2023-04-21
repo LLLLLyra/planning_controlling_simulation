@@ -2,6 +2,7 @@
 #include "hybrid_a_star.h"
 
 #include "common/config/flags.h"
+#include "common/math/Bspline.h"
 #include "common/math/piecewise_jerk/piecewise_jerk_speed_problem.h"
 #include "glog/logging.h"
 
@@ -41,6 +42,8 @@ bool HybridAStar::AnalyticExpansion(std::shared_ptr<Node3d> current_node) {
     return false;
   }
 
+  BSplineSmooth(reeds_shepp_to_check);
+
   if (!RSPCheck(reeds_shepp_to_check)) {
     return false;
   }
@@ -48,6 +51,80 @@ bool HybridAStar::AnalyticExpansion(std::shared_ptr<Node3d> current_node) {
   LOG(INFO) << "Reach the end configuration with Reed Sharp";
   // load the whole RSP as nodes and add to the close set
   final_node_ = LoadRSPinCS(reeds_shepp_to_check, current_node);
+  return true;
+}
+
+bool HybridAStar::BSplineSmooth(
+    std::shared_ptr<ReedSheppPath> reeds_shepp_to_check) {
+  const int n = reeds_shepp_to_check->x.size();
+  if (n <= 1) return false;
+  int head = 0, cnt = 0;
+  ReedSheppPath smoothed_path;
+  int k = planner_open_space_config_.iterative_anchoring_smoother_config()
+              .bspline_config()
+              .degrees();
+  double l = 0;
+  for (int i = 0; i < n; i++) {
+    if ((i + 1 < n &&
+         reeds_shepp_to_check->gear[i + 1] != reeds_shepp_to_check->gear[i]) ||
+        (i == n - 1)) {
+      const int num = i - head + 1;
+      if (num == 1) {
+        head = i;
+        continue;
+      }
+      if (num <= k) {
+        k = num - 1;
+      }
+      std::vector<double> t;
+      for (int j = 0; j < num + k + 1; j++) {
+        if (j <= k)
+          t.push_back(0);
+        else if (j >= num)
+          t.push_back(num - k);
+        else
+          t.push_back(j - k);
+      }
+      std::vector<double> xpoints(reeds_shepp_to_check->x.begin() + head,
+                                  reeds_shepp_to_check->x.begin() + i + 1);
+      std::vector<double> ypoints(reeds_shepp_to_check->y.begin() + head,
+                                  reeds_shepp_to_check->y.begin() + i + 1);
+      BSpline<double, double> spl_x = BSpline<double, double>(t, xpoints, k);
+      BSpline<double, double> spl_y = BSpline<double, double>(t, ypoints, k);
+      const int samples = n;
+      const double kDenseStep = static_cast<double>(num - k + 1) / samples;
+      for (double s = 0.0; s <= num - k; s += kDenseStep) {
+        smoothed_path.x.push_back(spl_x.bspline(s));
+        smoothed_path.y.push_back(spl_y.bspline(s));
+      }
+      size_t head2 = cnt;
+      for (size_t c = head2; c < smoothed_path.x.size(); c++) {
+        double dx, dy;
+        if (c == head2) {
+          dx = smoothed_path.x[c + 1] - smoothed_path.x[c];
+          dy = smoothed_path.y[c + 1] - smoothed_path.y[c];
+        } else if (c == smoothed_path.x.size() - 1) {
+          dx = smoothed_path.x[c] - smoothed_path.x[c - 1];
+          dy = smoothed_path.y[c] - smoothed_path.y[c - 1];
+        } else {
+          dx = 0.5 * (smoothed_path.x[c + 1] - smoothed_path.x[c - 1]);
+          dy = 0.5 * (smoothed_path.y[c + 1] - smoothed_path.y[c - 1]);
+        }
+        cnt++;
+        double dl = hypot(dx, dy);
+        l += dl;
+        double theta = std::atan2(dy, dx);
+        if (!reeds_shepp_to_check->gear[head]) {
+          theta = NormalizeAngle(theta + M_PI);
+        }
+        smoothed_path.phi.push_back(theta);
+        smoothed_path.gear.push_back(reeds_shepp_to_check->gear[head]);
+      }
+      smoothed_path.total_length = l;
+      head = i + 1;
+    }
+  }
+  *reeds_shepp_to_check = smoothed_path;
   return true;
 }
 
