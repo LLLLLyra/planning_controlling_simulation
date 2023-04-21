@@ -3,6 +3,8 @@
 #include <cmath>
 #include <utility>
 
+#include "glog/logging.h"
+
 double Sqr(const double x) { return x * x; }
 
 double CrossProd(const Vec2d& start_point, const Vec2d& end_point_1,
@@ -74,4 +76,20 @@ std::pair<double, double> Cartesian2Polar(double x, double y) {
   double r = std::sqrt(x * x + y * y);
   double theta = std::atan2(y, x);
   return std::make_pair(r, theta);
+}
+
+double NewtonRaphson(std::function<double(double)> f, double theta_0,
+                     double tol, size_t steps) {
+  double theta = theta_0;
+  size_t i = 0;
+  const double epsilon = 1e-10;
+  while (std::abs(f(theta)) > tol && i < steps) {
+    theta -=
+        f(theta) / ((f(theta + epsilon) - f(theta - epsilon)) / (2 * epsilon));
+  }
+
+  if (i >= steps) {
+    LOG(INFO) << "Max iterations reached; the tolerance is " << f(theta);
+  }
+  return theta;
 }

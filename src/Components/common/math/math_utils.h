@@ -188,4 +188,16 @@ almost_equal(T x, T y, int ulp) {
          std::fabs(x - y) < std::numeric_limits<T>::min();
 }
 
+/**
+ * @brief solve a root near `theta_0` of `f` with Newton-Raphson method
+ *
+ * @param f the function
+ * @param theta_0 initial guess
+ * @param tol tolerrance
+ * @param steps iterations
+ * @return the root
+ */
+double NewtonRaphson(std::function<double(double)> f, double theta_0,
+                     double tol, size_t steps);
+
 #endif  // _MATH_UTILS_H_
