@@ -13,6 +13,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Os")
 find_package(Protobuf REQUIRED)
 find_package(glog REQUIRED)
 find_package(osqp REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 find_package(
     catkin REQUIRED COMPONENTS

@@ -20,7 +20,7 @@ bool FemPosDeviationOsqpInterface::Solve() {
     return false;
   }
 
-  if (ref_points_.size() > std::numeric_limits<int>::max()) {
+  if (ref_points_.size() > std::numeric_limits<size_t>::max()) {
     LOG(ERROR) << "ref_points size too large, solver early terminates";
     return false;
   }
