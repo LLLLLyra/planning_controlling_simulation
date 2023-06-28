@@ -6,3 +6,5 @@ devel/**
 **/trajectory/**
 **/*.pyc
 .history/**
+src/Components/common/proto/*.h
+src/Components/common/proto/*.cc
