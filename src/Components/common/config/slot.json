@@ -1,4 +1,6 @@
 {
+  
+  "_comment1" : "`slots` is an array made up of coordinates of four corners of each slot, from left-bottom to left-top anti-clockwise",
   "slots": [
     [
       {
@@ -55,6 +57,7 @@
       }
     ]
   ],
+  "_comment2": "`radar_points` is an array containing obtacle points on both sides of an ego", 
   "radar_points": [
     [
       {
